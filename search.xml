@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Hexo 建立部落格 - NexT 美化</title>
+      <link href="/blogger/2020/07/01/hexo-change-theme-2/"/>
+      <url>/blogger/2020/07/01/hexo-change-theme-2/</url>
+      
+        <content type="html"><![CDATA[<h3 id="文章日期自己設定"><a href="#文章日期自己設定" class="headerlink" title="文章日期自己設定"></a>文章日期自己設定</h3><p>原本日期是顯示檔案生成的時間，可以改成自己寫好的日期。</p><ol><li>文章的檔名前面加上日期<br>ex: 2020-01-01-oneBlog.md<a id="more"></a></li><li>在 _config.yml 檔案的 #Writing 下面的 # new_post_name: :title.md 改成<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_post_name: :year-:month-:day-:title.md</span><br></pre></td></tr></table></figure></li></ol><h3 id="自定義-css"><a href="#自定義-css" class="headerlink" title="自定義 css"></a>自定義 css</h3><ol><li>在 themes/next/source/css 中建立 _mycss.styl 檔案放自己想要新增的。</li><li>引入檔案，在 main.styl 中的最後加上下面程式碼。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;_mycss.styl&quot;;</span><br></pre></td></tr></table></figure></li></ol><h3 id="大頭照設定"><a href="#大頭照設定" class="headerlink" title="大頭照設定"></a>大頭照設定</h3><p>找到這個檔案 themes/next/source/images/avatar.gif<br>把自己的大頭蓋過去.可以改副檔名</p><p>到主題下的 _config.yml 改路徑</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  url: &#x2F;images&#x2F;avatar.jpg</span><br></pre></td></tr></table></figure><h3 id="推薦插件"><a href="#推薦插件" class="headerlink" title="推薦插件"></a>推薦插件</h3><h4 id="搜尋-search"><a href="#搜尋-search" class="headerlink" title="搜尋 search"></a>搜尋 search</h4><ol><li><p>直接在終端機打下面的指令安裝</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure></li><li><p>在主題下的 _config.yml 中.下面 enable: false 改 true</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure></li></ol><h4 id="留言板-disqus"><a href="#留言板-disqus" class="headerlink" title="留言板 disqus"></a>留言板 disqus</h4><p>照下面這安裝就可以呈現.只是不能在首頁看有沒有效果<br><a href="https://www.jianshu.com/p/d68de067ea74" target="_blank" rel="noopener">Hexo添加Disqus评论</a></p><h4 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h4><p><a href="https://github.com/hexojs/hexo-generator-sitemap" target="_blank" rel="noopener">hexo-generator-sitemap</a></p><h3 id="推薦的網站"><a href="#推薦的網站" class="headerlink" title="推薦的網站"></a>推薦的網站</h3><p><a href="https://guanqr.com/tech/website/hexo-theme-next-customization/" target="_blank" rel="noopener">Hexo-NexT 主题个性优化</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo 建立部落格 - 更換主題</title>
+      <link href="/blogger/2020/06/27/hexo-change-theme/"/>
+      <url>/blogger/2020/06/27/hexo-change-theme/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo Themes</a> 裡面有很多的版型可以選擇，<br>一開始的預設主題是 landscape，<br>查詢過程中發現目前最熱門、支援最多的是 <a href="https://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT</a> 就來用用看!</p><a id="more"></a><h3 id="安裝主題"><a href="#安裝主題" class="headerlink" title="安裝主題"></a>安裝主題</h3><p>根據 <a href="https://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT</a> 官方文件來安裝。</p><ol><li><p>下載 NexT Theme</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure><p>下載完.查看themes裡面的資料夾是不是多個next的資料夾。</p></li><li><p>在 _config.yml 檔案裡把 theme: landscape 改換主題</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure></li><li><p>本地端預覽</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>注意可能有暫存.如果沒更換可以用無痕開啟網頁。</p></li></ol><h3 id="版型調整"><a href="#版型調整" class="headerlink" title="版型調整"></a>版型調整</h3><p>在 themes/next/layout 資料夾中的檔案.不同版型的檔案類型也不同.花一些時間了解他的邏輯 + 樣板語言就可以改 (其他詳細記錄在下一篇)</p><h3 id="上傳到遠端"><a href="#上傳到遠端" class="headerlink" title="上傳到遠端"></a>上傳到遠端</h3><p>自動生成靜態網暫並上傳遠端</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>注意上傳的網址路徑.錯誤會跑版.如果跑掉只要在網頁的 _config.yml 設定 root 。</p><p>我是用 github<br>如果靜態網頁是上傳到 master，只要設定成</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root: &#x2F;</span><br></pre></td></tr></table></figure><p>如果 master 是放資料，靜態網頁是在 gh-pages 上的話</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root: &#x2F;專案名稱&#x2F;</span><br></pre></td></tr></table></figure><p>記得這邊有時候還是要更新 master 的程式資料</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo 建立部落格</title>
+      <link href="/blogger/2020/06/26/hexo-created/"/>
+      <url>/blogger/2020/06/26/hexo-created/</url>
+      
+        <content type="html"><![CDATA[<h3 id="為何選-Hexo-建部落格"><a href="#為何選-Hexo-建部落格" class="headerlink" title="為何選 Hexo 建部落格?"></a>為何選 Hexo 建部落格?</h3><p>一開始是使用 google blogger 想要專注寫文章筆記，後來會 markdown 發現這很快能呈現有編排的樣子，<br>加上想把原本的文章重新整理，因此挑選時想找調整彈性比較大的部落格就挑到這個。</p><a id="more"></a><p>優點:使用 markdown 用一些元素就可以把版面呈現很好、中文文件多(主要開發者是華人)<br>缺點:圖片連結需要另外用(可以搭配 Firebase)</p><hr><h3 id="安裝並建立專案"><a href="#安裝並建立專案" class="headerlink" title="安裝並建立專案"></a>安裝並建立專案</h3><ul><li>安裝 git <!--kk 補連結--></li><li>安裝 node.js <!--kk 補連結--></li><li>安裝 hexo (步驟在下面) </li></ul><h5 id="1-安裝hexo"><a href="#1-安裝hexo" class="headerlink" title="1. 安裝hexo"></a>1. 安裝hexo</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure><h5 id="2-建立專案資料夾"><a href="#2-建立專案資料夾" class="headerlink" title="2. 建立專案資料夾"></a>2. 建立專案資料夾</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p>也可以建個資料夾後.在裡面打</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p>資料夾中會產生下面這些文件</p><!--kk 放圖0.安裝hexo後ㄦ--><pre><code>node_modulesscaffolds 範例(可忽略)source 放文章(放在_post資料夾裡面)themes 安裝主題時用.gitignore 上傳 git 時忽略上傳的檔案package.json 套件管理</code></pre><h5 id="3-本地端瀏覽"><a href="#3-本地端瀏覽" class="headerlink" title="3. 本地端瀏覽"></a>3. 本地端瀏覽</h5><p>在終端機下指令-本地端預覽(s是serve的縮寫)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>會出現 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a><br>打開後會出現下面這預設的部落格</p><!--(放圖1.預設的部落格)--><hr><h3 id="部落格部屬到遠端-github-上"><a href="#部落格部屬到遠端-github-上" class="headerlink" title="部落格部屬到遠端 github 上"></a>部落格部屬到遠端 github 上</h3><h5 id="1-上傳整個專案"><a href="#1-上傳整個專案" class="headerlink" title="1. 上傳整個專案"></a>1. 上傳整個專案</h5><p>a. 建立 git 專案 <!--kk 補連結--><br>b. 在 .gitignore 資料夾中寫</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node_modules&#x2F;</span><br><span class="line">themes&#x2F;</span><br></pre></td></tr></table></figure><p>忽略上面2個資料夾.因為 node_modules 檔案太大，themes等等要改主題所以先不要上傳<br>在專案的終端機打下面 git 指令<br>不清楚可以查看 git 相關資料 <!--kk 補連結--></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m&quot;create project&quot;</span><br><span class="line">git remote add origin &lt;url&gt;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><h5 id="2-上傳-hexo-的部落格"><a href="#2-上傳-hexo-的部落格" class="headerlink" title="2. 上傳 hexo 的部落格"></a>2. 上傳 hexo 的部落格</h5><p>a. 設定路徑<br>修改 _config.yml (網站配置文件)裡面的 deploy<br>把檔案推到 gh-pages 這分支上</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  branch: gh-pages</span><br><span class="line">  repo: &lt;儲存庫的路徑&gt;</span><br></pre></td></tr></table></figure><p>b. 打指令上傳遠端</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 上傳遠端.部署上去 (生成靜態網頁，並上傳遠端)</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>如果上面指令無法的話.第一次上傳需要下面這個</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 生成靜態網頁.檔案會出現 public 資料夾</span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 第一次需要這樣.之後可以省略這步驟</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>c. 上傳後如果網頁整個跑版(需要檢查路徑)</p><ol><li><p>在 _config.yml 中<br>改相對路徑 true</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">relative_link:true</span><br></pre></td></tr></table></figure></li><li><p>如果是上傳到 github 上，因為網站是存在子目錄中，要設定 _config.yml 的 root (網站根目錄)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">url: https:&#x2F;&#x2F;teishashu.github.io&#x2F;</span><br><span class="line">root: &#x2F;blogger&#x2F;</span><br></pre></td></tr></table></figure></li><li><p>重新上傳</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p> 需要等一下再刷新網頁</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo 常用指令</title>
+      <link href="/blogger/2020/06/25/hexo-code/"/>
+      <url>/blogger/2020/06/25/hexo-code/</url>
+      
+        <content type="html"><![CDATA[<h3 id="生成靜態網頁"><a href="#生成靜態網頁" class="headerlink" title="生成靜態網頁"></a>生成靜態網頁</h3><p>(全寫hexo generater)<br>會產生public檔案</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="本地端預覽"><a href="#本地端預覽" class="headerlink" title="本地端預覽"></a>本地端預覽</h3><p>(全寫hexo serve)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><h3 id="上傳遠端"><a href="#上傳遠端" class="headerlink" title="上傳遠端"></a>上傳遠端</h3><p>deploy 文件生成後立即部屬上去遠端網站<br>(可以省略 hexo g)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><h3 id="watch-監視文件變動-w"><a href="#watch-監視文件變動-w" class="headerlink" title="watch 監視文件變動 (-w)"></a>watch 監視文件變動 (-w)</h3><p>網站存檔時自動升成新的靜態網頁<br>(適合測試網站時使用)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 例子</span><br><span class="line">hexo g -w</span><br></pre></td></tr></table></figure><h3 id="clean-清除"><a href="#clean-清除" class="headerlink" title="clean 清除"></a>clean 清除</h3><p>清除暫存(db.json)和已生成的靜態文件(public)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure><p>更換主題時生成有問題可以使用</p><h3 id="錯誤訊息紀錄"><a href="#錯誤訊息紀錄" class="headerlink" title="錯誤訊息紀錄"></a>錯誤訊息紀錄</h3><p>會生成一個 debug.log 檔案裡面</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo --debug</span><br></pre></td></tr></table></figure><h3 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h3><h4 id="草稿文章"><a href="#草稿文章" class="headerlink" title="草稿文章"></a>草稿文章</h4><p>雖然一開始比較想要用手動，但是指令比較快還是需要熟悉，而且會自動把每頁需要的…建立好。</p><p>(手動)<br>在 source 的資料夾建立 _drafts 資料夾，新增一份.md。</p><p>(指令)<br>新增草稿文章</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft &lt;文章標題&gt;</span><br></pre></td></tr></table></figure><p>發布草稿文章</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish draft &lt;文章標題&gt;</span><br></pre></td></tr></table></figure><h4 id="其他頁面"><a href="#其他頁面" class="headerlink" title="其他頁面"></a>其他頁面</h4><p>除了首頁，像關於我們等其他頁面。</p><p>(手動)<br>在 source 資料夾下面新增想要的資料夾名稱，裡面放index.md</p><p>(指令)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &lt;頁面名稱&gt;</span><br></pre></td></tr></table></figure><p>也會產生手動的效果.在改檔案裡面的內容就可以</p><p>(範例):tags 標籤、categories 分類的頁面<br>a. 新增</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure><p>b. 增加頁面 type 屬性<br>在 source/tags 資料夾中的 index.md<br>頁面增加 type 屬性，就可以自動有相關的效果。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>categories 分類頁面也是一樣的作法，<code>type: &quot;categories&quot;</code> 就可以</p><h4 id="文章折疊預覽"><a href="#文章折疊預覽" class="headerlink" title="文章折疊預覽"></a>文章折疊預覽</h4><p><a href="http://blog.smallerpig.com/set-hexo-show-more-button-on-indexpage.html" target="_blank" rel="noopener">參考文章: 让hexo的首页只显示文章的部分内容而不是全部 | 朱启的个人博客</a><br>我是用裡面的第二項.在頁面中增加<code>&lt;!--more--&gt;</code><br>沒想到只是這樣註記就有這效果!!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

@@ -17,22 +17,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"teishashu.github.io","root":"/blogger/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"teishashu.github.io","root":"/blogger/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="前言Hexo Themes 裡面有很多的版型可以選擇，一開始的預設主題是 landscape，查詢過程中發現目前最熱門、支援最多的是 NexT 就來用用看!">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://teishashu.github.io/2020/06/20/hello-world/index.html">
+<meta property="og:title" content="Hexo 建立部落格 - 更換主題">
+<meta property="og:url" content="https://teishashu.github.io/2020/06/27/hexo-change-theme/index.html">
 <meta property="og:site_name" content="亭夏 Teisha - 邁向前端">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="前言Hexo Themes 裡面有很多的版型可以選擇，一開始的預設主題是 landscape，查詢過程中發現目前最熱門、支援最多的是 NexT 就來用用看!">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-06-20T08:04:26.199Z">
-<meta property="article:modified_time" content="2020-06-20T08:04:26.200Z">
+<meta property="article:published_time" content="2020-06-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-06-30T06:27:11.786Z">
 <meta property="article:author" content="Teisha HSU">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="blog">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://teishashu.github.io/2020/06/20/hello-world/">
+<link rel="canonical" href="https://teishashu.github.io/2020/06/27/hexo-change-theme/">
 
 
 <script id="page-configurations">
@@ -45,7 +47,7 @@
   };
 </script>
 
-  <title>Hello World | 亭夏 Teisha - 邁向前端</title>
+  <title>Hexo 建立部落格 - 更換主題 | 亭夏 Teisha - 邁向前端</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145830939-2"></script>
     <script>
@@ -112,6 +114,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -146,16 +149,38 @@
     <a href="/blogger/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
   </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/blogger/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>網站地圖</a>
-
-  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -179,10 +204,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/06/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/06/27/hexo-change-theme/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blogger/images/avatar.gif">
+      <meta itemprop="image" content="/blogger/images/avatar.jpg">
       <meta itemprop="name" content="Teisha HSU">
       <meta itemprop="description" content="">
     </span>
@@ -192,7 +217,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          Hexo 建立部落格 - 更換主題
         </h1>
 
         <div class="post-meta">
@@ -202,7 +227,23 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-06-20 16:04:26" itemprop="dateCreated datePublished" datetime="2020-06-20T16:04:26+08:00">2020-06-20</time>
+              <time title="創建時間：2020-06-27 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-27T00:00:00+08:00">2020-06-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-30 14:27:11" itemprop="dateModified" datetime="2020-06-30T14:27:11+08:00">2020-06-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blogger/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
             </span>
 
           
@@ -214,8 +255,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/blogger/2020/06/20/hello-world/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/20/hello-world/" itemprop="commentCount"></span>
+    <a title="disqus" href="/blogger/2020/06/27/hexo-change-theme/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/27/hexo-change-theme/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -230,19 +271,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo Themes</a> 裡面有很多的版型可以選擇，<br>一開始的預設主題是 landscape，<br>查詢過程中發現目前最熱門、支援最多的是 <a href="https://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT</a> 就來用用看!</p>
+<a id="more"></a>
+<h3 id="安裝主題"><a href="#安裝主題" class="headerlink" title="安裝主題"></a>安裝主題</h3><p>根據 <a href="https://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT</a> 官方文件來安裝。</p>
+<ol>
+<li><p>下載 NexT Theme</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+<p>下載完.查看themes裡面的資料夾是不是多個next的資料夾。</p>
+</li>
+<li><p>在 _config.yml 檔案裡把 theme: landscape 改換主題</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地端預覽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>注意可能有暫存.如果沒更換可以用無痕開啟網頁。</p>
+</li>
+</ol>
+<h3 id="版型調整"><a href="#版型調整" class="headerlink" title="版型調整"></a>版型調整</h3><p>在 themes/next/layout 資料夾中的檔案.不同版型的檔案類型也不同.花一些時間了解他的邏輯 + 樣板語言就可以改 (其他詳細記錄在下一篇)</p>
+<h3 id="上傳到遠端"><a href="#上傳到遠端" class="headerlink" title="上傳到遠端"></a>上傳到遠端</h3><p>自動生成靜態網暫並上傳遠端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>注意上傳的網址路徑.錯誤會跑版.如果跑掉只要在網頁的 _config.yml 設定 root 。</p>
+<p>我是用 github<br>如果靜態網頁是上傳到 master，只要設定成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root: &#x2F;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>如果 master 是放資料，靜態網頁是在 gh-pages 上的話</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root: &#x2F;專案名稱&#x2F;</span><br></pre></td></tr></table></figure>
+<p>記得這邊有時候還是要更新 master 的程式資料</p>
 
     </div>
 
@@ -251,16 +305,23 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blogger/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/blogger/tags/blog/" rel="tag"># blog</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/blogger/2020/06/25/hexo-code/" rel="next" title="Hexo 常用指令">
-      Hexo 常用指令 <i class="fa fa-chevron-right"></i>
+    <a href="/blogger/2020/06/26/hexo-created/" rel="prev" title="Hexo 建立部落格">
+      <i class="fa fa-chevron-left"></i> Hexo 建立部落格
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blogger/2020/07/01/hexo-change-theme-2/" rel="next" title="Hexo 建立部落格 - NexT 美化">
+      Hexo 建立部落格 - NexT 美化 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -327,12 +388,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝主題"><span class="nav-number">2.</span> <span class="nav-text">安裝主題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版型調整"><span class="nav-number">3.</span> <span class="nav-text">版型調整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上傳到遠端"><span class="nav-number">4.</span> <span class="nav-text">上傳到遠端</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Teisha HSU"
+      src="/blogger/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Teisha HSU</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -341,17 +404,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/blogger/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
+            <a href="/blogger/categories/">
+          
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分類</span>
+        <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">標籤</span>
+            <a href="/blogger/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
 </div>
@@ -422,6 +489,10 @@
 
 
 
+  
+<script src="/blogger/js/local-search.js"></script>
+
+
 
 
 
@@ -449,9 +520,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://teishashu.github.io/2020/06/20/hello-world/";
-    this.page.identifier = "2020/06/20/hello-world/";
-    this.page.title = "Hello World";
+    this.page.url = "https://teishashu.github.io/2020/06/27/hexo-change-theme/";
+    this.page.identifier = "2020/06/27/hexo-change-theme/";
+    this.page.title = "Hexo 建立部落格 - 更換主題";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
