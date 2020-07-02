@@ -221,8 +221,8 @@ p {
 }
 a,
 span.exturl {
-  border-bottom: 1px solid #ccc;
-  color: var(--link-color);
+  border-bottom: 1px solid #bbb;
+  color: #7b7b7b;
   outline: 0;
   text-decoration: none;
   overflow-wrap: break-word;
@@ -1193,7 +1193,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff6eff;
+  background: #b09fff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
