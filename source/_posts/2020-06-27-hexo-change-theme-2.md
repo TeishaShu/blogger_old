@@ -63,11 +63,12 @@ local_search:
 過程中感覺快把 git 弄壞了.後來有個感想是不要照網路上的亂弄
 要懂自己在打什麼 XD ~ 之前都是先試在來理解
 
-[Hexo Next 主题上传到Github中去以后无法点击查看文件？pull下来也是空白的？](https://www.zhihu.com/question/63962146).
+[Hexo Next 主题上传到Github中去以后无法点击查看文件？pull下来也是空白的？](https://www.zhihu.com/question/63962146)
 [【狀況題】如何在 Git 裡刪除檔案或變更檔名？](https://gitbook.tw/chapters/using-git/rename-and-delete-file.html)
-後來看很多文章發現都有 git rm --cached 相關的指令
 
-所以自己的作法是
+看很多文章後發現都有 git rm --cached 相關的指令
+
+我的作法是
 1. 把 next 裡面的 git 資料夾刪除
 2. 下指令把遠端的指向拿掉
 ```
@@ -79,10 +80,10 @@ git add .
 git commit -m"delete"
 git push
 ```
-完成
+(完成)
 
 
-如果過程中很卡很循環
+如果過程中很卡一直在循環
 可以還原一下
 ```
 git add .
