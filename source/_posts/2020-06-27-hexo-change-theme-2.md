@@ -57,3 +57,35 @@ local_search:
 
 ### 推薦的網站
 [Hexo-NexT 主题个性优化](https://guanqr.com/tech/website/hexo-theme-next-customization/)
+
+### 修改的主題上傳到 github
+這邊卡了一下，沒看過 github 上 themes 裡面資料夾會指到另一個地方
+過程中感覺快把 git 弄壞了.後來有個感想是不要照網路上的亂弄
+要懂自己在打什麼 XD ~ 之前都是先試在來理解
+
+[Hexo Next 主题上传到Github中去以后无法点击查看文件？pull下来也是空白的？](https://www.zhihu.com/question/63962146).
+[【狀況題】如何在 Git 裡刪除檔案或變更檔名？](https://gitbook.tw/chapters/using-git/rename-and-delete-file.html)
+後來看很多文章發現都有 git rm --cached 相關的指令
+
+所以自己的作法是
+1. 把 next 裡面的 git 資料夾刪除
+2. 下指令把遠端的指向拿掉
+```
+git rm --cached themes/next
+```
+3. 重新提交
+```
+git add .
+git commit -m"delete"
+git push
+```
+完成
+
+
+如果過程中很卡很循環
+可以還原一下
+```
+git add .
+git git reset --hard HEAD
+git status // 查看一下目前狀況
+```
