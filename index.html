@@ -197,6 +197,110 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/07/03/study-%E5%90%8C%E6%AD%A5%E9%9D%9E%E5%90%8C%E6%AD%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blogger/images/author.jpg">
+      <meta itemprop="name" content="Teisha HSU">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亭夏 Teisha - 邁向前端">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blogger/2020/07/03/study-%E5%90%8C%E6%AD%A5%E9%9D%9E%E5%90%8C%E6%AD%A5/" class="post-title-link" itemprop="url">Sync(同步)、Async(非同步)、Await(等待)、Promise(承諾)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-07-03 00:00:00 / 修改時間：13:42:49" itemprop="dateCreated datePublished" datetime="2020-07-03T00:00:00+08:00">2020-07-03</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blogger/2020/07/03/study-%E5%90%8C%E6%AD%A5%E9%9D%9E%E5%90%8C%E6%AD%A5/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/03/study-同步非同步/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>JavaScript 是單執行緒的程式語言，程式碼由上讀到下，一次只會執行一段程式碼(同步)。</p>
+<h3 id="Q-好像只有-AJAX抓資料才會用到"><a href="#Q-好像只有-AJAX抓資料才會用到" class="headerlink" title="Q:好像只有 AJAX抓資料才會用到!?"></a>Q:好像只有 AJAX抓資料才會用到!?</h3><h3 id="比較說明"><a href="#比較說明" class="headerlink" title="比較說明"></a>比較說明</h3><table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>說明</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sync (同步)</td>
+<td>一次只做一件事情，一個完成換下一個。注重順序</td>
+<td>需要等才能進行下一個，有時畫面像靜止沒反應-反應不夠快</td>
+</tr>
+<tr>
+<td>Async (非同步)</td>
+<td>各個任務同時直執行不會互等</td>
+<td></td>
+</tr>
+<tr>
+<td>Promise (承諾)</td>
+<td>解決同步、異步問題，ES6 開始出現。3種狀態(載入中、成功、失敗)</td>
+<td>使用 new Promise 後，resolve 回傳狀態後接 <code>.then</code>抓到還傳的值進行下個流程</td>
+</tr>
+<tr>
+<td>Await (等待)</td>
+<td>promise的延伸，常跟 Async 一起用。</td>
+<td>出錯會停止後面的程式碼，為了避免常跟 Async 一起用</td>
+</tr>
+</tbody></table>
+<h4 id="Promise-承諾"><a href="#Promise-承諾" class="headerlink" title="Promise (承諾)"></a>Promise (承諾)</h4><p>之前使用 jQuery 的 ajax 一直無法順利抓到值<br>後來加入這個就可以了.但是覺得寫太長後來就使用 fetch 同步異步問題都先處理好了。</p>
+<p><a href="https://www.oxxostudio.tw/articles/201706/javascript-promise-settimeout.html" target="_blank" rel="noopener">JavaScript 同步延遲 ( Promise + setTimeout )</a><br><a href="https://wcc723.github.io/javascript/2017/12/29/javascript-proimse/" target="_blank" rel="noopener">使用 Promise 處理非同步</a></p>
+<h3 id="相關-AJAX-使用"><a href="#相關-AJAX-使用" class="headerlink" title="相關 AJAX 使用"></a>相關 AJAX 使用</h3><h4 id="最原始的-js"><a href="#最原始的-js" class="headerlink" title="最原始的 js"></a>最原始的 js</h4><h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><h4 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/07/02/source-maps/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -725,7 +829,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blogger/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

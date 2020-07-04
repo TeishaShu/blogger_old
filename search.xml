@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Sync(同步)、Async(非同步)、Await(等待)、Promise(承諾)</title>
+      <link href="/blogger/2020/07/03/study-%E5%90%8C%E6%AD%A5%E9%9D%9E%E5%90%8C%E6%AD%A5/"/>
+      <url>/blogger/2020/07/03/study-%E5%90%8C%E6%AD%A5%E9%9D%9E%E5%90%8C%E6%AD%A5/</url>
+      
+        <content type="html"><![CDATA[<p>JavaScript 是單執行緒的程式語言，程式碼由上讀到下，一次只會執行一段程式碼(同步)。</p><h3 id="Q-好像只有-AJAX抓資料才會用到"><a href="#Q-好像只有-AJAX抓資料才會用到" class="headerlink" title="Q:好像只有 AJAX抓資料才會用到!?"></a>Q:好像只有 AJAX抓資料才會用到!?</h3><h3 id="比較說明"><a href="#比較說明" class="headerlink" title="比較說明"></a>比較說明</h3><table><thead><tr><th>名稱</th><th>說明</th><th>備註</th></tr></thead><tbody><tr><td>Sync (同步)</td><td>一次只做一件事情，一個完成換下一個。注重順序</td><td>需要等才能進行下一個，有時畫面像靜止沒反應-反應不夠快</td></tr><tr><td>Async (非同步)</td><td>各個任務同時直執行不會互等</td><td></td></tr><tr><td>Promise (承諾)</td><td>解決同步、異步問題，ES6 開始出現。3種狀態(載入中、成功、失敗)</td><td>使用 new Promise 後，resolve 回傳狀態後接 <code>.then</code>抓到還傳的值進行下個流程</td></tr><tr><td>Await (等待)</td><td>promise的延伸，常跟 Async 一起用。</td><td>出錯會停止後面的程式碼，為了避免常跟 Async 一起用</td></tr></tbody></table><h4 id="Promise-承諾"><a href="#Promise-承諾" class="headerlink" title="Promise (承諾)"></a>Promise (承諾)</h4><p>之前使用 jQuery 的 ajax 一直無法順利抓到值<br>後來加入這個就可以了.但是覺得寫太長後來就使用 fetch 同步異步問題都先處理好了。</p><p><a href="https://www.oxxostudio.tw/articles/201706/javascript-promise-settimeout.html" target="_blank" rel="noopener">JavaScript 同步延遲 ( Promise + setTimeout )</a><br><a href="https://wcc723.github.io/javascript/2017/12/29/javascript-proimse/" target="_blank" rel="noopener">使用 Promise 處理非同步</a></p><h3 id="相關-AJAX-使用"><a href="#相關-AJAX-使用" class="headerlink" title="相關 AJAX 使用"></a>相關 AJAX 使用</h3><h4 id="最原始的-js"><a href="#最原始的-js" class="headerlink" title="最原始的 js"></a>最原始的 js</h4><h4 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h4><h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><h4 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h4>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Source maps 筆記</title>
       <link href="/blogger/2020/07/02/source-maps/"/>
       <url>/blogger/2020/07/02/source-maps/</url>
