@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://teishashu.github.io/2020/07/03/study-%E5%90%8C%E6%AD%A5%E9%9D%9E%E5%90%8C%E6%AD%A5/</loc>
+    <loc>https://teishashu.github.io/2020/07/03/AJAX-%E5%90%8C%E6%AD%A5%E7%95%B0%E6%AD%A5/</loc>
     
-    <lastmod>2020-07-03T05:42:49.128Z</lastmod>
+    <lastmod>2020-07-04T13:09:06.336Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://teishashu.github.io/2020/07/01/hexo-change-theme-2/</loc>
+    
+    <lastmod>2020-07-04T13:05:57.884Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://teishashu.github.io/2020/07/03/AJAX-jQuery/</loc>
+    
+    <lastmod>2020-07-03T07:38:56.949Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>https://teishashu.github.io/2020/07/02/source-maps/</loc>
     
     <lastmod>2020-07-02T06:55:48.636Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://teishashu.github.io/2020/07/01/hexo-change-theme-2/</loc>
-    
-    <lastmod>2020-07-02T02:51:10.435Z</lastmod>
     
   </url>
   
