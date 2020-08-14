@@ -1,8 +1,7 @@
 ---
-title: Hexo 建立部落格 - 更換主題
+title: Hexo 建立部落格(3) - 更換主題
 tags: 
     - Hexo
-    - blog
 categories: Hexo
 ---
 ### 前言

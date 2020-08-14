@@ -1,6 +1,7 @@
 ---
 title: AJAX-jQuery
 date: 2020-07-03 14:00:53
+categories: AJAX
 tags: 
 - AJAX
 - jQuery

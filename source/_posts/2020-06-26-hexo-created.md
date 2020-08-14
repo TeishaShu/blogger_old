@@ -1,8 +1,7 @@
 ---
-title: Hexo 建立部落格
+title: Hexo 建立部落格(2) - 創立部落格
 tags: 
     - Hexo
-    - blog
 categories: Hexo
 ---
 ### 為何選 Hexo 建部落格?
