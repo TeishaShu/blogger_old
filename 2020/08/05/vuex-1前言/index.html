@@ -20,15 +20,23 @@
     var CONFIG = {"hostname":"teishashu.github.io","root":"/blogger/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="亭夏 Teisha - 邁向前端">
-<meta property="og:url" content="https://teishashu.github.io/tags/Nuxt/index.html">
+  <meta name="description" content="目的 針對大型專案使用 管理跨層(跨 component)的資料狀態">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VueX - 1. 前言">
+<meta property="og:url" content="https://teishashu.github.io/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/index.html">
 <meta property="og:site_name" content="亭夏 Teisha - 邁向前端">
+<meta property="og:description" content="目的 針對大型專案使用 管理跨層(跨 component)的資料狀態">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://vuex.vuejs.org/vuex.png">
+<meta property="article:published_time" content="2020-08-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-14T07:02:14.132Z">
 <meta property="article:author" content="Teisha HSU">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="VueX">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vuex.vuejs.org/vuex.png">
 
-<link rel="canonical" href="https://teishashu.github.io/tags/Nuxt/">
+<link rel="canonical" href="https://teishashu.github.io/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/">
 
 
 <script id="page-configurations">
@@ -36,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>標籤: Nuxt | 亭夏 Teisha - 邁向前端</title>
+  <title>VueX - 1. 前言 | 亭夏 Teisha - 邁向前端</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145830939-2"></script>
     <script>
@@ -196,57 +204,145 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blogger/images/author.jpg">
+      <meta itemprop="name" content="Teisha HSU">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亭夏 Teisha - 邁向前端">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VueX - 1. 前言
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-08-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-05T00:00:00+08:00">2020-08-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-08-14 15:02:14" itemprop="dateModified" datetime="2020-08-14T15:02:14+08:00">2020-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blogger/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Nuxt
-          <small>標籤</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blogger/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/05/vuex-1前言/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
+<li>針對大型專案使用</li>
+<li>管理跨層(跨 component)的資料狀態<a id="more"></a>
+父子層可以用 emit、props 來傳遞資料。<br>同層級的用 $eventbus 來傳遞資料(適合簡單的情境.資料量大時容易亂掉)。<br>全域變數資料無法做雙向綁定。</li>
+</ul>
+<p>因此，大型專案很多層時不用上面這些換成 VueX 統一管理呼叫。</p>
+<p><a href="https://vuex.vuejs.org/zh/guide/" target="_blank" rel="noopener">官方文件</a></p>
+<h3 id="安裝-VueX"><a href="#安裝-VueX" class="headerlink" title="安裝 VueX"></a>安裝 VueX</h3><p><a href="https://vuex.vuejs.org/zh/installation.html" target="_blank" rel="noopener">官方安裝</a><br>自己是使用 vue gui 這畫面後點下載 VueX ，就安裝好了。</p>
+<h3 id="狀態"><a href="#狀態" class="headerlink" title="狀態"></a>狀態</h3><p>單向資料流.注意順序不要逆向<br><img src="https://vuex.vuejs.org/vuex.png" alt="VueX"></p>
+<h4 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h4><ol>
+<li>state 設定參數。</li>
+<li>原本頁面使用 computed 引用。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">  isLoading()&#123;</span><br><span class="line">    return this.$store.state.isLoading;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Actions 操作類似 methods。</li>
+<li>Mutations 改變 state 的狀態。</li>
+<li>Getter 簡化寫法。</li>
+<li>Modules 模組化。</li>
+</ol>
+<hr>
+<h4 id="嚴謹模式-strict-true"><a href="#嚴謹模式-strict-true" class="headerlink" title="嚴謹模式  strict:true"></a>嚴謹模式  strict:true</h4><p>寫 VueX 語法不符合規範會跳錯<br>開發階段建議開著.產品階段建議關掉(因為耗資源)<br>可以在不同的模組裡面用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  strict: true,</span><br><span class="line">  state: &#123;&#125;,</span><br><span class="line">  mutations: &#123;&#125;,</span><br><span class="line">  actions: &#123;&#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-17T00:00:00+08:00"
-              content="2020-07-17">
-          07-17
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blogger/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/blogger/tags/VueX/" rel="tag"># VueX</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/blogger/2020/07/17/nuxt/" itemprop="url">
-            <span itemprop="name">Nuxt.js</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blogger/2020/08/04/js-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/" rel="prev" title="JavaScript ES6 的解構賦值">
+      <i class="fa fa-chevron-left"></i> JavaScript ES6 的解構賦值
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blogger/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/" rel="next" title="VueX - 2. State、Actions、Mutations 狀態">
+      VueX - 2. State、Actions、Mutations 狀態 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -293,6 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝-VueX"><span class="nav-number">2.</span> <span class="nav-text">安裝 VueX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狀態"><span class="nav-number">3.</span> <span class="nav-text">狀態</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步驟"><span class="nav-number">3.1.</span> <span class="nav-text">步驟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嚴謹模式-strict-true"><span class="nav-number">3.2.</span> <span class="nav-text">嚴謹模式  strict:true</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -308,7 +405,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blogger/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -321,7 +418,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/blogger/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -429,6 +526,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://teishashu.github.io/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/";
+    this.page.identifier = "2020/08/05/vuex-1前言/";
+    this.page.title = "VueX - 1. 前言";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://teishahsu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>

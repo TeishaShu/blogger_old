@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blogger/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blogger/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blogger/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blogger/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blogger/css/main.css">
+
+
+<link rel="stylesheet" href="/blogger/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"teishashu.github.io","root":"/blogger/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Getter目的: 資料呈現前調整(類似 computed )。資料出現在網頁上之前做一些過濾、加減">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VueX - 3. Getter、Modules 簡化與模組化">
+<meta property="og:url" content="https://teishashu.github.io/2020/08/07/vuex-3%E7%B0%A1%E5%8C%96%E6%A8%A1%E7%B5%84/index.html">
+<meta property="og:site_name" content="亭夏 Teisha - 邁向前端">
+<meta property="og:description" content="Getter目的: 資料呈現前調整(類似 computed )。資料出現在網頁上之前做一些過濾、加減">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-08-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-14T12:54:45.115Z">
+<meta property="article:author" content="Teisha HSU">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="VueX">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://teishashu.github.io/2020/08/07/vuex-3%E7%B0%A1%E5%8C%96%E6%A8%A1%E7%B5%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>VueX - 3. Getter、Modules 簡化與模組化 | 亭夏 Teisha - 邁向前端</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145830939-2"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-145830939-2');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blogger/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">亭夏 Teisha - 邁向前端</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blogger/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blogger/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blogger/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blogger/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blogger/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-more">
+
+    <a href="/blogger/more/" rel="section"><i class="fa fa-link fa-fw"></i>更多</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/08/07/vuex-3%E7%B0%A1%E5%8C%96%E6%A8%A1%E7%B5%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blogger/images/author.jpg">
+      <meta itemprop="name" content="Teisha HSU">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亭夏 Teisha - 邁向前端">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VueX - 3. Getter、Modules 簡化與模組化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-08-07 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-07T00:00:00+08:00">2020-08-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-08-14 20:54:45" itemprop="dateModified" datetime="2020-08-14T20:54:45+08:00">2020-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blogger/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/blogger/2020/08/07/vuex-3%E7%B0%A1%E5%8C%96%E6%A8%A1%E7%B5%84/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/07/vuex-3簡化模組/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><p>目的: 資料呈現前調整(類似 computed )。<br>資料出現在網頁上之前做一些過濾、加減</p>
+<a id="more"></a>
+<p>相關行為從 store 讀出來<br>有 mapGetters、mapActions 這 2 個簡化程式<br>mapGetters 針對 computed 簡化<br>mapActions 針對 methods 簡化<br>方式差不多。</p>
+<h4 id="mapGetters-針對-computed-簡化"><a href="#mapGetters-針對-computed-簡化" class="headerlink" title="mapGetters 針對 computed 簡化"></a>mapGetters 針對 computed 簡化</h4><p>把 computed 中使用到 vuex 的部分移動到 getter 中</p>
+<ol>
+<li><p>在 component 中引入 getter<br>加入<code>import { mapGetters } from &#39;vuex&#39;;</code><br>可以取出所有的 getter<br>注意 { mapGetters } 是物件形式.不要忘了加只寫名稱!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; mapGetters &#125; from &#39;vuex&#39;; &#x2F;&#x2F; 加入這段</span><br><span class="line">export default &#123;...&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原本 component 中的設定.改成在 vuex 中的 getter</p>
+<p>A. 原本 component 中的程式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  isLoading()&#123;</span><br><span class="line">      return this.$store.state.isLoading;</span><br><span class="line">    &#125;,</span><br><span class="line">  cart()&#123;</span><br><span class="line">    return this.$store.state.cart;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>改成在 vuex 中 getter 樣子(也是要 return 回傳資料)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getters:&#123;</span><br><span class="line">  isLoading(state)&#123;</span><br><span class="line">    return state.isLoading;</span><br><span class="line">  &#125;,</span><br><span class="line">  cart(state)&#123;</span><br><span class="line">    return state.cart;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>B. 原本 component 中的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 原本樣子</span><br><span class="line">computed: &#123;</span><br><span class="line">  isLoading()&#123;</span><br><span class="line">      return this.$store.state.isLoading;</span><br><span class="line">    &#125;,</span><br><span class="line">  cart()&#123;</span><br><span class="line">    return this.$store.state.cart;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 改成這樣</span><br><span class="line">computed: &#123;</span><br><span class="line">  ...mapGetters([&#39;isLoading&#39;, &#39;cart&#39;])</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="mapActions-針對-methods-簡化"><a href="#mapActions-針對-methods-簡化" class="headerlink" title="mapActions 針對 methods 簡化"></a>mapActions 針對 methods 簡化</h4><ol>
+<li><p>加入 mapActions</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; mapGetters, mapActions &#125; from &#39;vuex&#39;; &#x2F;&#x2F; 加入這段</span><br><span class="line">export default &#123;...&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>改變 component 中的設定<br>原本樣子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  &#x2F;&#x2F; 這可以簡化</span><br><span class="line">  addCartProductIn() &#123;</span><br><span class="line">    this.$store.dispatch(&#39;addCartProductIn&#39;);</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;&#x2F; 這無法簡化.因為有參數需要傳入</span><br><span class="line">  changeNum(num) &#123;</span><br><span class="line">    this.$store.dispatch(&#39;changeNum&#39;, num)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>修改後</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  changeNum(num) &#123;</span><br><span class="line">    this.$store.dispatch(&#39;changeNum&#39;, num)</span><br><span class="line">  &#125;,</span><br><span class="line">  ...mapActions([&#39;addCartProductIn&#39;]), &#x2F;&#x2F; 改這邊</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<hr>
+<h3 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h3><p>目的: VueX 檔案模組化<br>分成幾個檔案.引入加上來的地方。</p>
+<ol>
+<li><p>新增模板並把相關資料移動進去<br>index.js 這檔案是先建立一個 vuex<br>而新的檔案不需要.裡面先寫成下面這樣<br>也不需要 strict:true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import axios from &#39;axios&#39;; &#x2F;&#x2F; 如果需要axios在增加</span><br><span class="line">export default:&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在把 index.js 中 state、mutations、actions、getters 一起複製過去<br>增加刪減</p>
+<p>這邊當時卡了一下.因為一開始複製整個 index.js 過去改<br>vuex重複2次創建.所以產生錯誤查到下面文章解決<br><a href="https://github.com/vuejs/vuex/issues/1748" target="_blank" rel="noopener">[vuex] getters should be function but</a></p>
+</li>
+<li><p>在 index.js 中引入<br>A. import 進來模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Vuex from &#39;vuex&#39;</span><br><span class="line">import axios from &#39;axios&#39;;</span><br><span class="line"></span><br><span class="line">import productsModules from &quot;.&#x2F;products&quot;; &#x2F;&#x2F; 加入這段引用進來</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)  &#x2F;&#x2F;這邊 vuex 啟用</span><br><span class="line">export default new Vuex.Store(&#123;.....&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>B. 增加 modules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  strict: true,</span><br><span class="line">  state: &#123;...&#125;,</span><br><span class="line">  mutations: &#123;...&#125;,</span><br><span class="line">  actions: &#123;...&#125;,</span><br><span class="line">  getters:&#123;...&#125;,</span><br><span class="line">  modules: &#123; &#x2F;&#x2F;其他模板引入</span><br><span class="line">    productsModules,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>改到這邊檔案是沒問題的</p>
+<h4 id="注意幾個重點"><a href="#注意幾個重點" class="headerlink" title="注意幾個重點"></a>注意幾個重點</h4><h5 id="一般情況"><a href="#一般情況" class="headerlink" title="一般情況:"></a>一般情況:</h5><ul>
+<li>state 模組區域變數</li>
+<li>actions、mutations、getters 全域變數<br>(全域擔心的是跟其他檔案的名稱一樣造成衝突)</li>
+</ul>
+<h5 id="全都變成區域變數"><a href="#全都變成區域變數" class="headerlink" title="全都變成區域變數:"></a>全都變成區域變數:</h5><p>設定 <code>namespaced: true,</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">namespaced: true,</span><br><span class="line">state: &#123;..&#125;,</span><br></pre></td></tr></table></figure>
+<br>
+A. 使用到 index.js 頁面的加入 ```{root: true}``` 回到根目錄
+下面程式會回到跟目錄找 LOADING
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.commit(&#39;LOADING&#39;, true, &#123;root: true&#125;);</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>B. component 中 mapGetters、mapActions<br>使用到的地方.要加檔案名稱 <code>&#39;productModules&#39;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapGetters(&#39;productModules&#39;,[&#39;dataProduct2&#39;, &#39;selectNum2&#39;]),</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>C. component 中 methods 使用到的地方<br>路徑需要更改 (文件引入index.js的名稱/actions 下的方法)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.dispatch(&#39;productModules&#x2F;cartBtnApi&#39;);</span><br></pre></td></tr></table></figure>
+<br>
+沒用會出現報錯 ```[vuex] unknown action type:```
+這邊卡了一下.
+雖然檔名是 product.js 但是引入 index.js 時是下面這樣
+import productModules from "./products";
+所以名稱是 productModules 不是 product
+
+</li>
+</ol>
+<h5 id="模組化後調用其他模組的方法"><a href="#模組化後調用其他模組的方法" class="headerlink" title="模組化後調用其他模組的方法"></a>模組化後調用其他模組的方法</h5><p><a href="https://www.jianshu.com/p/5c467a3e1ca9" target="_blank" rel="noopener">vuex 模块化之后如何调用其他模块的方法和属性</a><br><a href="https://ithelp.ithome.com.tw/articles/10209719" target="_blank" rel="noopener">modules 1 </a><br><a href="https://ithelp.ithome.com.tw/articles/10209848" target="_blank" rel="noopener">modules 2</a></p>
+<!-- 如果要使用到其他模組的 mutation、action，需要在 dispatch、commit 的第三個參數帶入 ```{ root: true }```，表示這個 mutation、action 不是目前模組的。  
+
+A. commit 用於 mutation 來動態更新 state，當前模組和其他模組
+
+
+B. dispatch 用於 action，當前模組和其他模組
+自己模組的不用命名，其他模組需要在 action 路徑上命名
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;加上在 index.js 中引入的模組名稱 productModules</span><br><span class="line">this.$store.dispatch(&#39;productModules&#x2F;selectCategory&#39;, &#123;style,isPageClick&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>C. getters 獲取當前模組 getter；<br>D. state 獲取當前模組 state；<br>E. rootState 獲取其他模組 state；<br>F. rootGetters 獲取其他模組 getter –&gt;</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blogger/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/blogger/tags/VueX/" rel="tag"># VueX</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blogger/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/" rel="prev" title="VueX - 2. State、Actions、Mutations 狀態">
+      <i class="fa fa-chevron-left"></i> VueX - 2. State、Actions、Mutations 狀態
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter"><span class="nav-number">1.</span> <span class="nav-text">Getter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mapGetters-針對-computed-簡化"><span class="nav-number">1.1.</span> <span class="nav-text">mapGetters 針對 computed 簡化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mapActions-針對-methods-簡化"><span class="nav-number">1.2.</span> <span class="nav-text">mapActions 針對 methods 簡化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modules"><span class="nav-number">2.</span> <span class="nav-text">Modules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意幾個重點"><span class="nav-number">2.1.</span> <span class="nav-text">注意幾個重點</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般情況"><span class="nav-number">2.1.1.</span> <span class="nav-text">一般情況:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#全都變成區域變數"><span class="nav-number">2.1.2.</span> <span class="nav-text">全都變成區域變數:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模組化後調用其他模組的方法"><span class="nav-number">2.1.3.</span> <span class="nav-text">模組化後調用其他模組的方法</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Teisha HSU"
+      src="/blogger/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Teisha HSU</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blogger/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blogger/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blogger/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TeishaShu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TeishaShu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:colorfulspirit@gmail.com" title="E-Mail → mailto:colorfulspirit@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Teisha HSU</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blogger/lib/anime.min.js"></script>
+  <script src="/blogger/lib/velocity/velocity.min.js"></script>
+  <script src="/blogger/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blogger/js/utils.js"></script>
+
+<script src="/blogger/js/motion.js"></script>
+
+
+<script src="/blogger/js/schemes/muse.js"></script>
+
+
+<script src="/blogger/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blogger/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://teishahsu.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://teishashu.github.io/2020/08/07/vuex-3%E7%B0%A1%E5%8C%96%E6%A8%A1%E7%B5%84/";
+    this.page.identifier = "2020/08/07/vuex-3簡化模組/";
+    this.page.title = "VueX - 3. Getter、Modules 簡化與模組化";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://teishahsu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

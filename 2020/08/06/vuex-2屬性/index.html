@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"teishashu.github.io","root":"/blogger/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="為何選 Hexo 建部落格?一開始是使用 google blogger 想要專注寫文章筆記，後來會 markdown 發現這很快能呈現有編排的樣子，加上想把原本的文章重新整理，因此挑選時想找調整彈性比較大的部落格就挑到這個。">
+  <meta name="description" content="State目的: 管理資料狀態.資料儲存 (類似 data )。 原本的頁面用時.在 state 設定好後.回原本頁面把原本的變數換成 computed 用 VueX 的資料.統一控制。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 建立部落格(2) - 創立部落格">
-<meta property="og:url" content="https://teishashu.github.io/2020/06/26/hexo-created/index.html">
+<meta property="og:title" content="VueX - 2. State、Actions、Mutations 狀態">
+<meta property="og:url" content="https://teishashu.github.io/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/index.html">
 <meta property="og:site_name" content="亭夏 Teisha - 邁向前端">
-<meta property="og:description" content="為何選 Hexo 建部落格?一開始是使用 google blogger 想要專注寫文章筆記，後來會 markdown 發現這很快能呈現有編排的樣子，加上想把原本的文章重新整理，因此挑選時想找調整彈性比較大的部落格就挑到這個。">
+<meta property="og:description" content="State目的: 管理資料狀態.資料儲存 (類似 data )。 原本的頁面用時.在 state 設定好後.回原本頁面把原本的變數換成 computed 用 VueX 的資料.統一控制。">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-06-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-16T04:34:48.863Z">
+<meta property="article:published_time" content="2020-08-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-14T12:55:47.370Z">
 <meta property="article:author" content="Teisha HSU">
-<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="VueX">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://teishashu.github.io/2020/06/26/hexo-created/">
+<link rel="canonical" href="https://teishashu.github.io/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>Hexo 建立部落格(2) - 創立部落格 | 亭夏 Teisha - 邁向前端</title>
+  <title>VueX - 2. State、Actions、Mutations 狀態 | 亭夏 Teisha - 邁向前端</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145830939-2"></script>
     <script>
@@ -208,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/06/26/hexo-created/">
+    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blogger/images/author.jpg">
@@ -221,7 +222,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo 建立部落格(2) - 創立部落格
+          VueX - 2. State、Actions、Mutations 狀態
         </h1>
 
         <div class="post-meta">
@@ -231,14 +232,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-06-26 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-26T00:00:00+08:00">2020-06-26</time>
+              <time title="創建時間：2020-08-06 00:00:00" itemprop="dateCreated datePublished" datetime="2020-08-06T00:00:00+08:00">2020-08-06</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-07-16 12:34:48" itemprop="dateModified" datetime="2020-07-16T12:34:48+08:00">2020-07-16</time>
+                <time title="修改時間：2020-08-14 20:55:47" itemprop="dateModified" datetime="2020-08-14T20:55:47+08:00">2020-08-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,7 +247,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blogger/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                  <a href="/blogger/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
                 </span>
             </span>
 
@@ -259,8 +260,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/blogger/2020/06/26/hexo-created/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/26/hexo-created/" itemprop="commentCount"></span>
+    <a title="disqus" href="/blogger/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/06/vuex-2屬性/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,63 +276,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="為何選-Hexo-建部落格"><a href="#為何選-Hexo-建部落格" class="headerlink" title="為何選 Hexo 建部落格?"></a>為何選 Hexo 建部落格?</h3><p>一開始是使用 google blogger 想要專注寫文章筆記，後來會 markdown 發現這很快能呈現有編排的樣子，<br>加上想把原本的文章重新整理，因此挑選時想找調整彈性比較大的部落格就挑到這個。</p>
+        <h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><p>目的: 管理資料狀態.資料儲存 (類似 data )。</p>
+<p>原本的頁面用時.在 state 設定好後.回原本頁面把原本的變數換成 computed 用 VueX 的資料.統一控制。</p>
 <a id="more"></a>
-<p>優點:使用 markdown 用一些元素就可以把版面呈現很好、中文文件多(主要開發者是華人)<br>缺點:圖片連結需要另外用(可以搭配 Firebase)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 資料夾 src&#x2F;store&#x2F;index.js 中</span><br><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isLoading:false,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 原本頁面.(store前面記得加$)</span><br><span class="line">computed:&#123;</span><br><span class="line">  isLoading()&#123;</span><br><span class="line">    return this.$store.state.isLoading;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h3 id="安裝並建立專案"><a href="#安裝並建立專案" class="headerlink" title="安裝並建立專案"></a>安裝並建立專案</h3><ul>
-<li>安裝 git <!--kk 補連結--></li>
-<li>安裝 node.js <!--kk 補連結--></li>
-<li>安裝 hexo (步驟在下面) </li>
+<h3 id="Mutations"><a href="#Mutations" class="headerlink" title="Mutations"></a>Mutations</h3><p>目的: 處理資料 state 的狀態(改變資料內容)。</p>
+<ul>
+<li>改動 state，(這邊改 devtools 也會變)</li>
+<li>執行同步行為</li>
+<li>使用常數(全都大寫名稱來區分.也可以不這樣用)</li>
 </ul>
-<h5 id="1-安裝hexo"><a href="#1-安裝hexo" class="headerlink" title="1. 安裝hexo"></a>1. 安裝hexo</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123; </span><br><span class="line">  &#x2F;&#x2F; LOADING 跟 actions 的 updateLoading 提交的名稱有關</span><br><span class="line">  &#x2F;&#x2F; 第一個填 state，第二個要傳的資料 (payload)</span><br><span class="line">  LOADING(state, payload)&#123;</span><br><span class="line">    state.isLoading &#x3D; payload;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
-<h5 id="2-建立專案資料夾"><a href="#2-建立專案資料夾" class="headerlink" title="2. 建立專案資料夾"></a>2. 建立專案資料夾</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>也可以建個資料夾後.在裡面打</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>資料夾中會產生下面這些文件</p>
-<!--kk 放圖0.安裝hexo後ㄦ-->
-
-<pre><code>node_modules
-scaffolds 範例(可忽略)
-source 放文章(放在_post資料夾裡面)
-themes 安裝主題時用
-.gitignore 上傳 git 時忽略上傳的檔案
-package.json 套件管理</code></pre><h5 id="3-本地端瀏覽"><a href="#3-本地端瀏覽" class="headerlink" title="3. 本地端瀏覽"></a>3. 本地端瀏覽</h5><p>在終端機下指令-本地端預覽(s是serve的縮寫)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>會出現 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a><br>打開後會出現下面這預設的部落格</p>
-<!--(放圖1.預設的部落格)-->
 
 <hr>
-<h3 id="部落格部屬到遠端-github-上"><a href="#部落格部屬到遠端-github-上" class="headerlink" title="部落格部屬到遠端 github 上"></a>部落格部屬到遠端 github 上</h3><h5 id="1-上傳整個專案"><a href="#1-上傳整個專案" class="headerlink" title="1. 上傳整個專案"></a>1. 上傳整個專案</h5><p>a. 建立 git 專案 <!--kk 補連結--><br>b. 在 .gitignore 資料夾中寫</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node_modules&#x2F;</span><br><span class="line">themes&#x2F;</span><br></pre></td></tr></table></figure>
-<p>忽略上面2個資料夾.因為 node_modules 檔案太大，themes等等要改主題所以先不要上傳<br>在專案的終端機打下面 git 指令<br>不清楚可以查看 git 相關資料 <!--kk 補連結--></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m&quot;create project&quot;</span><br><span class="line">git remote add origin &lt;url&gt;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h3><p>目的: 操作一些動作(類似 methods )、取得遠端資料(不會改變資料狀態)。<br>處理 API (非同步、取得遠端資 ajax )、setTimeout (資料處理是在 mutations )。</p>
+<p>改資料時.因為 actions 屬性像 methods 因此</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123; </span><br><span class="line">  &#x2F;&#x2F; LOADING 是 updateLoading 提交的「 Mutation 名稱」</span><br><span class="line">  updateLoading(context,changeStatus)&#123;</span><br><span class="line">    &#x2F;&#x2F; 改變資料這樣寫</span><br><span class="line">    context.commit(&#39;LOADING&#39;,changeStatus);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
-<h5 id="2-上傳-hexo-的部落格"><a href="#2-上傳-hexo-的部落格" class="headerlink" title="2. 上傳 hexo 的部落格"></a>2. 上傳 hexo 的部落格</h5><p>a. 設定路徑<br>修改 _config.yml (網站配置文件)裡面的 deploy<br>把檔案推到 gh-pages 這分支上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  branch: gh-pages</span><br><span class="line">  repo: &lt;儲存庫的路徑&gt;</span><br></pre></td></tr></table></figure>
+<p>提交 commit .需要傳一些參數的狀況下「名稱用字串，參數用物件」方式<br>(commit、dispatch 方式不同)</p>
+<p>context 有下面這些屬性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  state,      &#x2F;&#x2F; 等同于 &#96;store.state&#96;，若在模块中则为局部状态</span><br><span class="line">  rootState,  &#x2F;&#x2F; 等同于 &#96;store.state&#96;，只存在于模块中</span><br><span class="line">  commit,     &#x2F;&#x2F; 等同于 &#96;store.commit&#96;</span><br><span class="line">  dispatch,   &#x2F;&#x2F; 等同于 &#96;store.dispatch&#96;</span><br><span class="line">  getters,    &#x2F;&#x2F; 等同于 &#96;store.getters&#96;</span><br><span class="line">  rootGetters &#x2F;&#x2F; 等同于 &#96;store.getters&#96;，只存在于模块中</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>b. 打指令上傳遠端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 上傳遠端.部署上去 (生成靜態網頁，並上傳遠端)</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>如果上面指令無法的話.第一次上傳需要下面這個</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 生成靜態網頁.檔案會出現 public 資料夾</span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 第一次需要這樣.之後可以省略這步驟</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>c. 上傳後如果網頁整個跑版(需要檢查路徑)</p>
+<p>使用 actions 是打 dispatch 呼叫要用的東西</p>
 <ol>
-<li><p>在 _config.yml 中<br>改相對路徑 true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">relative_link:true</span><br></pre></td></tr></table></figure>
+<li><p>在 component 頁面使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.dispatch(&#39;名稱&#39;,true)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>如果是上傳到 github 上，因為網站是存在子目錄中，要設定 _config.yml 的 root (網站根目錄)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">url: https:&#x2F;&#x2F;teishashu.github.io&#x2F;</span><br><span class="line">root: &#x2F;blogger&#x2F;</span><br></pre></td></tr></table></figure>
+<li><p>在其他 actions 使用( dispatch 前面用 context)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.dispatch(&#39;名稱&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;例子</span><br><span class="line">this.aaa();   &#x2F;&#x2F; 原本呼叫 aaa function 的方式</span><br><span class="line">context.dispatch(&#39;aaa&#39;);   &#x2F;&#x2F; 變成這樣呼叫</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>重新上傳</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<li><p>很多參數需要傳的狀況下「全部用物件」方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">this.selectCategory(categoryStyle, false); &#x2F;&#x2F; 原本</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 修改</span><br><span class="line">context.dispatch(&#123;</span><br><span class="line">  type: &#39;selectCategory&#39;,</span><br><span class="line">  style: categoryStyle,</span><br><span class="line">  isPageClick: false</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p> 需要等一下再刷新網頁</p>
+<p>另一段還是照舊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selectCategory(context, &#123;style, isPageClick&#125;)&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
+<p>然後在網頁開發者工具的 Vue 中.<br>只要觸發在 Filter mutations 搜尋的下面會看到觸發的時點和名稱<br>畫面右邊會顯示 state、mutations 的狀況<br>(state、mutations 的資料要同步才正常)</p>
+<hr>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>如果需要傳遞的參數太多.可以換成物件方式(解構)<br>因為是解構所以參數可以直接用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; component 頁面</span><br><span class="line">addtoCart(id, qty &#x3D; 1) &#123;   &#x2F;&#x2F; 「&#x3D; 1」預設值的意思</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 原本參數太多</span><br><span class="line">  &#x2F;&#x2F; this.$store.dispatch(&#39;addtoCart&#39;,id, qty);</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 用物件包起來</span><br><span class="line">  this.$store.dispatch(&#39;addtoCart&#39;,&#123;id, qty&#125;);</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; vuex 裡面</span><br><span class="line">addtoCart(context, &#123;id, qty&#125;) &#123;  &#x2F;&#x2F;注意!不要寫上預設值。解構-&gt;直接用參數即可</span><br><span class="line">  const vm &#x3D; this;</span><br><span class="line">  const url &#x3D; &#96;$&#123;process.env.APIPATH&#125;&#x2F;api&#x2F;$&#123;process.env.CUSTOMPATH&#125;&#x2F;cart&#96;;</span><br><span class="line">  const item &#x3D; &#123;</span><br><span class="line">    product_id: id,</span><br><span class="line">    qty,</span><br><span class="line">  &#125;;</span><br><span class="line">  context.commit(&#39;LOADING&#39;,true)</span><br><span class="line">  axios.post(url, &#123; data: item &#125;).then((response) &#x3D;&gt; &#123;</span><br><span class="line">    context.commit(&#39;LOADING&#39;,false)</span><br><span class="line">    context.dispatch(&#39;getCart&#39;);</span><br><span class="line">    console.log(&#39;加入購物車:&#39;, response);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -341,7 +329,8 @@ package.json 套件管理</code></pre><h5 id="3-本地端瀏覽"><a href="#3-本
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/blogger/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/blogger/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/blogger/tags/VueX/" rel="tag"># VueX</a>
           </div>
 
         
@@ -350,12 +339,12 @@ package.json 套件管理</code></pre><h5 id="3-本地端瀏覽"><a href="#3-本
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blogger/2020/06/25/hexo-code/" rel="prev" title="Hexo 建立部落格(1) - 常用指令">
-      <i class="fa fa-chevron-left"></i> Hexo 建立部落格(1) - 常用指令
+    <a href="/blogger/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/" rel="prev" title="VueX - 1. 前言">
+      <i class="fa fa-chevron-left"></i> VueX - 1. 前言
     </a></div>
       <div class="post-nav-item">
-    <a href="/blogger/2020/06/27/hexo-change-theme/" rel="next" title="Hexo 建立部落格(3) - 更換主題">
-      Hexo 建立部落格(3) - 更換主題 <i class="fa fa-chevron-right"></i>
+    <a href="/blogger/2020/08/07/vuex-3%E7%B0%A1%E5%8C%96%E6%A8%A1%E7%B5%84/" rel="next" title="VueX - 3. Getter、Modules 簡化與模組化">
+      VueX - 3. Getter、Modules 簡化與模組化 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -422,7 +411,7 @@ package.json 套件管理</code></pre><h5 id="3-本地端瀏覽"><a href="#3-本
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#為何選-Hexo-建部落格"><span class="nav-number">1.</span> <span class="nav-text">為何選 Hexo 建部落格?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝並建立專案"><span class="nav-number">2.</span> <span class="nav-text">安裝並建立專案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安裝hexo"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 安裝hexo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-建立專案資料夾"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 建立專案資料夾</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-本地端瀏覽"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. 本地端瀏覽</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部落格部屬到遠端-github-上"><span class="nav-number">3.</span> <span class="nav-text">部落格部屬到遠端 github 上</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-上傳整個專案"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 上傳整個專案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-上傳-hexo-的部落格"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 上傳 hexo 的部落格</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">1.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mutations"><span class="nav-number">2.</span> <span class="nav-text">Mutations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actions"><span class="nav-number">3.</span> <span class="nav-text">Actions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tip"><span class="nav-number">4.</span> <span class="nav-text">tip</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -562,9 +551,9 @@ package.json 套件管理</code></pre><h5 id="3-本地端瀏覽"><a href="#3-本
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://teishashu.github.io/2020/06/26/hexo-created/";
-    this.page.identifier = "2020/06/26/hexo-created/";
-    this.page.title = "Hexo 建立部落格(2) - 創立部落格";
+    this.page.url = "https://teishashu.github.io/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/";
+    this.page.identifier = "2020/08/06/vuex-2屬性/";
+    this.page.title = "VueX - 2. State、Actions、Mutations 狀態";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
