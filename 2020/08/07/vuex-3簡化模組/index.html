@@ -28,7 +28,7 @@
 <meta property="og:description" content="Getter目的: 資料呈現前調整(類似 computed )。資料出現在網頁上之前做一些過濾、加減">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-08-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-14T12:54:45.115Z">
+<meta property="article:modified_time" content="2020-08-14T13:18:40.266Z">
 <meta property="article:author" content="Teisha HSU">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="VueX">
@@ -239,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-14 20:54:45" itemprop="dateModified" datetime="2020-08-14T20:54:45+08:00">2020-08-14</time>
+                <time title="修改時間：2020-08-14 21:18:40" itemprop="dateModified" datetime="2020-08-14T21:18:40+08:00">2020-08-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -331,7 +331,8 @@
 <h5 id="全都變成區域變數"><a href="#全都變成區域變數" class="headerlink" title="全都變成區域變數:"></a>全都變成區域變數:</h5><p>設定 <code>namespaced: true,</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">namespaced: true,</span><br><span class="line">state: &#123;..&#125;,</span><br></pre></td></tr></table></figure>
 <br>
-A. 使用到 index.js 頁面的加入 ```{root: true}``` 回到根目錄
+A. 使用到 index.js 頁面的加入 { root: true } 回到根目錄<br>
+(如果路徑有寫名稱會到其他的檔案)<br>
 下面程式會回到跟目錄找 LOADING
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.commit(&#39;LOADING&#39;, true, &#123;root: true&#125;);</span><br></pre></td></tr></table></figure>
 <br>
@@ -343,10 +344,10 @@ A. 使用到 index.js 頁面的加入 ```{root: true}``` 回到根目錄
 <p>C. component 中 methods 使用到的地方<br>路徑需要更改 (文件引入index.js的名稱/actions 下的方法)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$store.dispatch(&#39;productModules&#x2F;cartBtnApi&#39;);</span><br></pre></td></tr></table></figure>
 <br>
-沒用會出現報錯 ```[vuex] unknown action type:```
-這邊卡了一下.
-雖然檔名是 product.js 但是引入 index.js 時是下面這樣
-import productModules from "./products";
+沒用會出現報錯 [vuex] unknown action type:<br>
+這邊卡了一下.<br>
+雖然檔名是 product.js 但是引入 index.js 時是下面這樣<br>
+import productModules from "./products";<br>
 所以名稱是 productModules 不是 product
 
 </li>
