@@ -2,16 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://teishashu.github.io/2020/08/04/2-RESTful-API/</loc>
+    
+    <lastmod>2020-08-27T09:38:50.707Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://teishashu.github.io/2020/08/04/4-vue-route/</loc>
+    
+    <lastmod>2020-08-27T06:32:03.676Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://teishashu.github.io/2020/08/04/3-AJAX-%E7%95%B0%E9%83%A8/</loc>
+    
+    <lastmod>2020-08-27T06:31:52.634Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://teishashu.github.io/2020/08/04/1-nuxt/</loc>
+    
+    <lastmod>2020-08-27T06:31:41.676Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://teishashu.github.io/2020/08/21/vue-env/</loc>
+    
+    <lastmod>2020-08-22T08:00:22.998Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://teishashu.github.io/2020/08/07/vuex-3%E7%B0%A1%E5%8C%96%E6%A8%A1%E7%B5%84/</loc>
     
-    <lastmod>2020-08-14T13:18:40.266Z</lastmod>
+    <lastmod>2020-08-21T14:29:02.070Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://teishashu.github.io/2020/08/06/vuex-2%E5%B1%AC%E6%80%A7/</loc>
     
-    <lastmod>2020-08-14T12:55:47.370Z</lastmod>
+    <lastmod>2020-08-21T09:52:14.339Z</lastmod>
     
   </url>
   
