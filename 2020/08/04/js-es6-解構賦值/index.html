@@ -23,17 +23,18 @@
   <meta name="description" content="右方資料給到左方陣列裡的數量不夠時剩下的就不會賦值，中間有空就會跳開let [grandpa, , dad, mom, me]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript ES6 的解構賦值">
-<meta property="og:url" content="https://teishashu.github.io/2020/08/04/js-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/index.html">
+<meta property="og:url" content="https://teishashu.github.io/2020/08/04/js-es6-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/index.html">
 <meta property="og:site_name" content="亭夏 Teisha - 邁向前端">
 <meta property="og:description" content="右方資料給到左方陣列裡的數量不夠時剩下的就不會賦值，中間有空就會跳開let [grandpa, , dad, mom, me]">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-08-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-06T07:19:05.234Z">
+<meta property="article:modified_time" content="2020-09-19T08:57:02.770Z">
 <meta property="article:author" content="Teisha HSU">
+<meta property="article:tag" content="ES6">
 <meta property="article:tag" content="Javascript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://teishashu.github.io/2020/08/04/js-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/">
+<link rel="canonical" href="https://teishashu.github.io/2020/08/04/js-es6-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/">
 
 
 <script id="page-configurations">
@@ -208,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/08/04/js-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://teishashu.github.io/2020/08/04/js-es6-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blogger/images/author.jpg">
@@ -238,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-06 15:19:05" itemprop="dateModified" datetime="2020-08-06T15:19:05+08:00">2020-08-06</time>
+                <time title="修改時間：2020-09-19 16:57:02" itemprop="dateModified" datetime="2020-09-19T16:57:02+08:00">2020-09-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,8 +260,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/blogger/2020/08/04/js-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/04/js-解構賦值/" itemprop="commentCount"></span>
+    <a title="disqus" href="/blogger/2020/08/04/js-es6-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/04/js-es6-解構賦值/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -306,6 +307,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/blogger/tags/ES6/" rel="tag"># ES6</a>
               <a href="/blogger/tags/Javascript/" rel="tag"># Javascript</a>
           </div>
 
@@ -315,12 +317,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blogger/2020/08/04/3-AJAX-%E7%95%B0%E9%83%A8/" rel="prev" title="非同步(異步)">
-      <i class="fa fa-chevron-left"></i> 非同步(異步)
+    <a href="/blogger/2020/08/04/js-es6-%E8%AE%8A%E6%95%B8/" rel="prev" title="JavaScript ES6 的 let、const">
+      <i class="fa fa-chevron-left"></i> JavaScript ES6 的 let、const
     </a></div>
       <div class="post-nav-item">
-    <a href="/blogger/2020/08/04/4-vue-route/" rel="next" title="Vue - 動態路由 -點按鈕換頁面">
-      Vue - 動態路由 -點按鈕換頁面 <i class="fa fa-chevron-right"></i>
+    <a href="/blogger/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/" rel="next" title="VueX - 1. 前言">
+      VueX - 1. 前言 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -403,20 +405,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/blogger/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/blogger/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blogger/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -524,8 +526,8 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://teishashu.github.io/2020/08/04/js-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/";
-    this.page.identifier = "2020/08/04/js-解構賦值/";
+    this.page.url = "https://teishashu.github.io/2020/08/04/js-es6-%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC/";
+    this.page.identifier = "2020/08/04/js-es6-解構賦值/";
     this.page.title = "JavaScript ES6 的解構賦值";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
