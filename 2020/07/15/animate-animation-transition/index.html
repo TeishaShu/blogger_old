@@ -28,7 +28,7 @@
 <meta property="og:description" content="前言製作網頁的動畫、特效以前是用 JavaScript、Flash，後來 css3 增加了一些屬性，變成開發時間可以縮短，透過 css 交給瀏覽器處理也比較不吃資源。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-07-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-16T11:19:32.780Z">
+<meta property="article:modified_time" content="2020-09-22T04:40:52.409Z">
 <meta property="article:author" content="Teisha HSU">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="網頁特效">
@@ -239,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-07-16 19:19:32" itemprop="dateModified" datetime="2020-07-16T19:19:32+08:00">2020-07-16</time>
+                <time title="修改時間：2020-09-22 12:40:52" itemprop="dateModified" datetime="2020-09-22T12:40:52+08:00">2020-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -346,7 +346,7 @@
 </li>
 <li><p>設定時間有2種方式:</p>
 <ol>
-<li>from、to : 一開始和最後的效果(0%、100%)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@keyframes animate1 &#123;</span><br><span class="line">  from &#123;background-color:red; margin-left:0;&#125;</span><br><span class="line">  to &#123;background-color:black; margin-left:50px;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>from、to : 一開始和最後的效果( 0%、100% )<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@keyframes animate1 &#123;</span><br><span class="line">  from &#123;background-color:red; margin-left:0;&#125;</span><br><span class="line">  to &#123;background-color:black; margin-left:50px;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>0-100% : 幾 % 時做什麼事<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@keyframes animate2 &#123;</span><br><span class="line">  0% &#123;background-color:red; margin-left:0;&#125;</span><br><span class="line">  50% &#123;background-color:blue; margin-left:100px;&#125;</span><br><span class="line">  100% &#123;background-color:black; margin-left:50px;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -372,13 +372,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  width:50px;</span><br><span class="line">  height:50px;</span><br><span class="line">  animation: animate2 3s ease 1s infinite alternate;</span><br><span class="line">  background-color:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@keyframes animate2 &#123;</span><br><span class="line">  0% &#123;background-color:red; margin-left:0;&#125;</span><br><span class="line">  50% &#123;background-color:blue; margin-left:100px;&#125;</span><br><span class="line">  100% &#123;background-color:black; margin-left:50px;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://www.oxxostudio.tw/articles/201803/css-animation.html" target="_blank" rel="noopener">完整解析 CSS 動畫</a></p>
-<h4 id="Animate-css"><a href="#Animate-css" class="headerlink" title="Animate.css"></a>Animate.css</h4><p>CSS3 Animate 有太多要設定，有人整理成一個css檔方便使用，只要會引用、使用就可以操作。<br><a href="https://animate.style/" target="_blank" rel="noopener">Animate.css</a></p>
+<h4 id="Animate-css"><a href="#Animate-css" class="headerlink" title="Animate.css"></a>Animate.css</h4><p>CSS3 Animate 有太多要設定，有人整理成一個 css 檔方便使用，只要會引用、使用就可以操作。<br><a href="https://animate.style/" target="_blank" rel="noopener">Animate.css</a></p>
 <p>Vue.js中使用方式<br><a href="https://blog.csdn.net/qq_39009348/article/details/81144296" target="_blank" rel="noopener">animate.css在vue项目中的使用</a></p>
 <p>操作流程:</p>
 <ol>
 <li><p>下載安裝</p>
 </li>
-<li><p>在想要動畫的地方放 css，每個想要的特效前面都要加<code>animate__animated</code>。</p>
+<li><p>在想要動畫的地方放 css，每個想要的特效前面都要加 <code>animate__animated</code>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 class&#x3D;&quot;title animate__animated animate__bounce&quot;&gt;title&lt;&#x2F;h1&gt;</span><br></pre></td></tr></table></figure></li>
 <li><p>如果希望可以調整的更多.有2種方式:<br>a. 在設定的 css 上面寫 animation 就可以控制</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  .title&#123;</span><br><span class="line">    animation-duration: 2s;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
@@ -474,7 +474,7 @@
 <td>慢(吃力的起床) &gt; 快 &gt; 慢(剎車感)</td>
 </tr>
 </tbody></table>
-<p>想要其他的線性可以使用下面的網站自己調看看<br>4個數字組成，0~1之間<br><a href="https://cubic-bezier.com/" target="_blank" rel="noopener">貝茲曲線</a></p>
+<p>想要其他的線性可以使用下面的網站自己調看看<br>4 個數字組成， 0~1 之間<br><a href="https://cubic-bezier.com/" target="_blank" rel="noopener">貝茲曲線</a></p>
 <h4 id="套用效果-1"><a href="#套用效果-1" class="headerlink" title="套用效果"></a>套用效果</h4><style>
   .transition123{
     width:50px;
@@ -528,7 +528,7 @@ div:hover{
 <td>1. 需要事件觸發才能執行特效。(滑鼠、鍵盤事件) <br>2. 只能設定一開始跟結束的效果中間無法。<br>3. 一次性無法重複 (除非一直觸發才能重複)</td>
 </tr>
 </tbody></table>
-<p>他們簡寫的前4個順序一樣，但只要寫前面2個就可以跑了。</p>
+<p>他們簡寫的前 4 個順序一樣，但只要寫前面2個就可以跑了。</p>
 <ul>
 <li><p>animation:<br>name duration timing-function delay<br>iteration-count direction fill-mode play-state;</p>
 </li>

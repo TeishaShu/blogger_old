@@ -28,7 +28,7 @@
 <meta property="og:description" content="官網開發環境跟正式環境的主機不同.導致網站路徑不同，開發通常使用內部測試的 API 、測試的資料庫，正式才會用正式的 API，避免使用正式主機做開發。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-08-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-22T08:00:22.998Z">
+<meta property="article:modified_time" content="2020-09-22T04:52:59.538Z">
 <meta property="article:author" content="Teisha HSU">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -238,7 +238,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-22 16:00:22" itemprop="dateModified" datetime="2020-08-22T16:00:22+08:00">2020-08-22</time>
+                <time title="修改時間：2020-09-22 12:52:59" itemprop="dateModified" datetime="2020-09-22T12:52:59+08:00">2020-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,15 +279,17 @@
 <a id="more"></a>
 <h3 id="檔名命名方式"><a href="#檔名命名方式" class="headerlink" title="檔名命名方式"></a>檔名命名方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.env  所有環境中載入檔案內所有變數</span><br><span class="line">.env.local   同上.但會被git忽略</span><br><span class="line">.env.[mode]   指定模式中載入</span><br><span class="line">.env.[mode].local  同上.但會被git忽略</span><br></pre></td></tr></table></figure>
 
-<h3 id="文件撰寫方法"><a href="#文件撰寫方法" class="headerlink" title="文件撰寫方法"></a>文件撰寫方法</h3><p>2種寫法.下面的前面一定要 VUE_APP_ 開頭<br>沒有加 src 裡面的檔案讀不到變數</p>
+<h3 id="文件撰寫方法"><a href="#文件撰寫方法" class="headerlink" title="文件撰寫方法"></a>文件撰寫方法</h3><p>2 種寫法.下面的前面一定要 VUE_APP_ 開頭<br>沒有加 src 裡面的檔案讀不到變數</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FOO&#x3D;bar</span><br><span class="line">VUE_APP_SECRET&#x3D;secret</span><br></pre></td></tr></table></figure>
 
 <h3 id="讀出來"><a href="#讀出來" class="headerlink" title="讀出來"></a>讀出來</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; process.env.名稱</span><br><span class="line">process.env.VUE_APP_SECRET</span><br></pre></td></tr></table></figure>
 
-<p>*如果出現 undefined<br>設定好 env 後要重新啟動這服務 <code>npm run serve</code></p>
+<ul>
+<li>如果出現 undefined<br>設定好 env 後要重新啟動這服務 <code>npm run serve</code></li>
+</ul>
 <h3 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h3><ol>
 <li>建立新文件 (檔名叫 .env )</li>
-<li>寫檔案內容 (VUE_APP_ 開頭)</li>
+<li>寫檔案內容 ( VUE_APP_ 開頭)</li>
 </ol>
 <h3 id="env-development-檔案"><a href="#env-development-檔案" class="headerlink" title=".env.development 檔案"></a>.env.development 檔案</h3><p>預設的這個比 .env 權重高.因此不用另外在 package.json 的 server 設定<br>development 模式用於 vue-cli-service serve (預設環境)<br>production 模式用於 vue-cli-service build 和 vue-cli-service test:e2e (預設環境)</p>
 <h3 id="特定檔案"><a href="#特定檔案" class="headerlink" title="特定檔案"></a>特定檔案</h3><p>檔案名稱 .env.CY<br>在 package.json 的 server 可以設定切換特定環境<br>加上「–mode 名稱」</p>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="Getter目的: 資料呈現前調整(類似 computed )。資料出現在網頁上之前做一些過濾、加減">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-08-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-10T15:57:20.969Z">
+<meta property="article:modified_time" content="2020-09-22T04:52:02.739Z">
 <meta property="article:author" content="Teisha HSU">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="VueX">
@@ -239,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-09-10 23:57:20" itemprop="dateModified" datetime="2020-09-10T23:57:20+08:00">2020-09-10</time>
+                <time title="修改時間：2020-09-22 12:52:02" itemprop="dateModified" datetime="2020-09-22T12:52:02+08:00">2020-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -308,7 +308,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import axios from &#39;axios&#39;; &#x2F;&#x2F; 如果需要axios在增加</span><br><span class="line">export default:&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在把 index.js 中 state、mutations、actions、getters 一起複製過去<br>增加刪減</p>
-<p>這邊當時卡了一下.因為一開始複製整個 index.js 過去改<br>vuex重複2次創建.所以產生錯誤查到下面文章解決<br><a href="https://github.com/vuejs/vuex/issues/1748" target="_blank" rel="noopener">[vuex] getters should be function but</a></p>
+<p>這邊當時卡了一下.因為一開始複製整個 index.js 過去改<br>vuex 重複 2 次創建.所以產生錯誤查到下面文章解決<br><a href="https://github.com/vuejs/vuex/issues/1748" target="_blank" rel="noopener">[vuex] getters should be function but</a></p>
 </li>
 <li><p>在 store/index.js 中引入<br>A. import 進來模板</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import Vuex from &#39;vuex&#39;</span><br><span class="line">import axios from &#39;axios&#39;;</span><br><span class="line"></span><br><span class="line">import productsModules from &quot;.&#x2F;products&quot;; &#x2F;&#x2F; 這邊加入這段引用進來(注意命名的名稱會時常使用)</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)  &#x2F;&#x2F;這邊 vuex 啟用</span><br><span class="line">export default new Vuex.Store(&#123;.....&#125;)</span><br></pre></td></tr></table></figure>
@@ -326,7 +326,7 @@
 <h5 id="1-全部改成區域變數-namespaced"><a href="#1-全部改成區域變數-namespaced" class="headerlink" title="1. 全部改成區域變數 namespaced"></a>1. 全部改成區域變數 namespaced</h5><p>設定 <code>namespaced: true,</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">namespaced: true,</span><br><span class="line">state: &#123;..&#125;,</span><br></pre></td></tr></table></figure>
 
-<h5 id="2-模組化後調用其他模組的方法"><a href="#2-模組化後調用其他模組的方法" class="headerlink" title="2. 模組化後調用其他模組的方法"></a>2. 模組化後調用其他模組的方法</h5><p>沒用會報錯<code>[vuex] unknown action type:</code><br>注意: 一開始在 store/index.js 中引入的其他 modules 名稱.<br>是使用引入名稱.不是檔案名稱。</p>
+<h5 id="2-模組化後調用其他模組的方法"><a href="#2-模組化後調用其他模組的方法" class="headerlink" title="2. 模組化後調用其他模組的方法"></a>2. 模組化後調用其他模組的方法</h5><p>沒用會報錯 <code>[vuex] unknown action type:</code><br>注意: 一開始在 store/index.js 中引入的其他 modules 名稱.<br>是使用引入名稱.不是檔案名稱。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 名稱是 productModules 不是 products</span><br><span class="line">import productModules from &quot;.&#x2F;products&quot;;</span><br></pre></td></tr></table></figure>
 
 <p>參考<br><a href="https://www.jianshu.com/p/5c467a3e1ca9" target="_blank" rel="noopener">vuex 模块化之后如何调用其他模块的方法和属性</a><br><a href="https://ithelp.ithome.com.tw/articles/10209719" target="_blank" rel="noopener">modules 1 </a><br><a href="https://ithelp.ithome.com.tw/articles/10209848" target="_blank" rel="noopener">modules 2</a></p>

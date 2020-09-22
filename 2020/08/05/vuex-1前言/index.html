@@ -20,16 +20,16 @@
     var CONFIG = {"hostname":"teishashu.github.io","root":"/blogger/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="目的 針對大型專案使用 管理跨層(跨 component)的資料狀態">
+  <meta name="description" content="目的 針對大型專案使用 管理跨層(跨 component )的資料狀態">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VueX - 1. 前言">
 <meta property="og:url" content="https://teishashu.github.io/2020/08/05/vuex-1%E5%89%8D%E8%A8%80/index.html">
 <meta property="og:site_name" content="亭夏 Teisha - 邁向前端">
-<meta property="og:description" content="目的 針對大型專案使用 管理跨層(跨 component)的資料狀態">
+<meta property="og:description" content="目的 針對大型專案使用 管理跨層(跨 component )的資料狀態">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://vuex.vuejs.org/vuex.png">
 <meta property="article:published_time" content="2020-08-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-14T07:02:14.132Z">
+<meta property="article:modified_time" content="2020-09-22T04:44:29.860Z">
 <meta property="article:author" content="Teisha HSU">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="VueX">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-14 15:02:14" itemprop="dateModified" datetime="2020-08-14T15:02:14+08:00">2020-08-14</time>
+                <time title="修改時間：2020-09-22 12:44:29" itemprop="dateModified" datetime="2020-09-22T12:44:29+08:00">2020-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -280,7 +280,7 @@
       
         <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
 <li>針對大型專案使用</li>
-<li>管理跨層(跨 component)的資料狀態<a id="more"></a>
+<li>管理跨層(跨 component )的資料狀態<a id="more"></a>
 父子層可以用 emit、props 來傳遞資料。<br>同層級的用 $eventbus 來傳遞資料(適合簡單的情境.資料量大時容易亂掉)。<br>全域變數資料無法做雙向綁定。</li>
 </ul>
 <p>因此，大型專案很多層時不用上面這些換成 VueX 統一管理呼叫。</p>

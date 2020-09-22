@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"teishashu.github.io","root":"/blogger/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="ES6是來解決ES5不足的部分.提升程式碼品質可以幫助開發時更便利。  優點: 解決ES5不方便的部分，避免汙染全域變數使得維護性較高 問題: 舊版瀏覽器需要編譯才能用">
+  <meta name="description" content="varES6 之前 JavaScript 沒有區塊域的概念，透過 var 定義所有的變數，導致可能出現區域變數覆蓋全域變數或 for 循環變數洩漏為全域變數，因此在 ES6 推出 let、const 改善這問題。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 的變數比較 var、let、const">
 <meta property="og:url" content="https://teishashu.github.io/2020/08/04/js-es6-%E8%AE%8A%E6%95%B8/index.html">
 <meta property="og:site_name" content="亭夏 Teisha - 邁向前端">
-<meta property="og:description" content="ES6是來解決ES5不足的部分.提升程式碼品質可以幫助開發時更便利。  優點: 解決ES5不方便的部分，避免汙染全域變數使得維護性較高 問題: 舊版瀏覽器需要編譯才能用">
+<meta property="og:description" content="varES6 之前 JavaScript 沒有區塊域的概念，透過 var 定義所有的變數，導致可能出現區域變數覆蓋全域變數或 for 循環變數洩漏為全域變數，因此在 ES6 推出 let、const 改善這問題。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-08-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-19T09:10:24.928Z">
+<meta property="article:modified_time" content="2020-09-22T04:44:16.929Z">
 <meta property="article:author" content="Teisha HSU">
 <meta property="article:tag" content="ES6">
 <meta property="article:tag" content="Javascript">
@@ -239,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-09-19 17:10:24" itemprop="dateModified" datetime="2020-09-19T17:10:24+08:00">2020-09-19</time>
+                <time title="修改時間：2020-09-22 12:44:16" itemprop="dateModified" datetime="2020-09-22T12:44:16+08:00">2020-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,50 +276,76 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>ES6是來解決ES5不足的部分.提升程式碼品質可以幫助開發時更便利。</p>
-<ul>
-<li>優點: 解決ES5不方便的部分，避免汙染全域變數使得維護性較高</li>
-<li>問題: 舊版瀏覽器需要編譯才能用<a id="more"></a>
+        <h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>ES6 之前 JavaScript 沒有區塊域的概念，透過 var 定義所有的變數，導致可能出現區域變數覆蓋全域變數或 for 循環變數洩漏為全域變數，<br>因此在 ES6 推出 let、const 改善這問題。</p>
+<a id="more"></a>
+<p>另外，如果有不同的開發者變數很有可能互相汙染到 window 裡面物件的內容，<br>所以產生使用 let、const 就不會汙染到全域變數(不會影響到 window)。<br>用 for 迴圈、if 判斷式裡面的 var，也會影響到 window，顯示 i = 某某。</p>
+<div style="background: #e0f4f4; font-size: 0.95rem; padding: 15px; line-height: 1.7rem; color: #10adad; margin-bottom: 20px;">
+全域變數：window 下的變數，整個程式中都可以被存取與修改。<br>
+區域變數：在「{}」這符號內的變數，執行時建立變數，執行完後銷毀 (ex: if、else、for、while)，<br>
+此外 function 函式之外的所有程式碼都不能存取這個變數。
+</div>
+
+<ol>
+<li><p>var 容易汙染全域變數 window 裡面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 例子1</span><br><span class="line">var a &#x3D; 1;</span><br><span class="line">console.log(window.a);  &#x2F;&#x2F; 1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 例子2</span><br><span class="line">for(var i &#x3D; 0; i&lt;10; i++) &#123;</span><br><span class="line">  console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(i); &#x2F;&#x2F; undefined 代表有定義還沒賦予值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不影響外面變數：使用 function </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function a() &#123;</span><br><span class="line">  var i &#x3D; 1;</span><br><span class="line">  console.log(i);  &#x2F;&#x2F; 1</span><br><span class="line">&#125;</span><br><span class="line">a();</span><br><span class="line">console.log(i);  &#x2F;&#x2F; i is not defined</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不影響外面變數：用 IIFE 立即函式 <code>(function() {})()</code> ，或 var 改成 let 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">for (var i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">  setTimeout(function () &#123;</span><br><span class="line">    console.log(&#39;這執行第&#39; + i + &#39;次&#39;);</span><br><span class="line">  &#125;, 10);</span><br><span class="line">&#125;</span><br><span class="line">console.log(i); &#x2F;&#x2F; undefined</span><br><span class="line">&#x2F;&#x2F; 這執行第10次 (這句會重複跑 5 次)</span><br><span class="line"></span><br><span class="line">for (var i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">  (function (j) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">      console.log(&#39;這執行第&#39; + j + &#39;次&#39;);</span><br><span class="line">    &#125;, 10);</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 這執行第0次、這執行第1次、這執行第2次、這執行第3次、這執行第4次</span><br></pre></td></tr></table></figure>
 
 </li>
+</ol>
+<h3 id="什麼是ES6"><a href="#什麼是ES6" class="headerlink" title="什麼是ES6"></a>什麼是ES6</h3><p>來解決 ES5 不足的部分.提升程式碼品質可以幫助開發時更便利。</p>
+<ul>
+<li>優點: 解決 ES5 不方便的部分，避免汙染全域變數使得維護性較高</li>
+<li>問題: 舊版瀏覽器需要編譯才能用</li>
 </ul>
-<h3 id="相關電子書"><a href="#相關電子書" class="headerlink" title="相關電子書"></a>相關電子書</h3><p><a href="https://eyesofkids.gitbooks.io/javascript-start-from-es6" target="_blank" rel="noopener">從ES6開始的JavaScript學習生活</a><br><a href="https://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6入門</a></p>
-<h3 id="let、const-特性"><a href="#let、const-特性" class="headerlink" title="let、const 特性"></a>let、const 特性</h3><p>為了解決原本使用 var 容易汙染全域變數。<br>維護性比較高，不會互相汙染到變數影響開發者(避免合併時會有衝突)</p>
-<h4 id="A-不容易汙染全域變數-window-裡面"><a href="#A-不容易汙染全域變數-window-裡面" class="headerlink" title="A. 不容易汙染全域變數 window 裡面"></a>A. 不容易汙染全域變數 window 裡面</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 1;</span><br><span class="line">console.log(window.a)  &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
-<p>在 var 時會影響到 window 上的變數，<br>如果有不同的開發者變數很有可能互相汙染到 window 裡面物件的內容<br>所以產生使用 let、const 就不會汙染到全域變數(不會影響到 window)。<br>用 for 迴圈、if 判斷式裡面的 var，也會影響到 window，顯示 i = 某某。</p>
-<p>如果使用 var 不要影響到外層，需要用立即函式 <code>(function() {})()</code> ，或 var 改成 let 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for (var i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">  setTimeout(function () &#123;</span><br><span class="line">    console.log(&#39;這執行第&#39; + i + &#39;次&#39;);</span><br><span class="line">  &#125;, 10);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 這執行第10次 (這句會重複跑 5 次)</span><br><span class="line"></span><br><span class="line">for (var i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">  (function (j) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">      console.log(&#39;這執行第&#39; + j + &#39;次&#39;);</span><br><span class="line">    &#125;, 10);</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 這執行第0次、這執行第1次、這執行第2次、這執行第3次、這執行第4次</span><br></pre></td></tr></table></figure>
-
-<h4 id="B-區塊變數"><a href="#B-區塊變數" class="headerlink" title="B. 區塊變數"></a>B. 區塊變數</h4><p>用來宣告區塊裡的變數，被「{}」花括弧包起來的變數，使用到 let、const 時只會存活在括號裡。<br>盡量使用 const，除非變數要改才用 let。</p>
-<h4 id="C-hoisting-向上提升-創造、執行順序"><a href="#C-hoisting-向上提升-創造、執行順序" class="headerlink" title="C. hoisting 向上提升(創造、執行順序)"></a>C. hoisting 向上提升(創造、執行順序)</h4><p>var 的向上提升的特性使的定義變數前.變數也有 undefined，此外也可同個變數重複命名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; var a; &#x2F;&#x2F; 下一行出現 undefined 是因為這行隱藏了事先定義變數。</span><br><span class="line">console.log(a); &#x2F;&#x2F; undefined</span><br><span class="line">var a &#x3D; 3;</span><br><span class="line">var a &#x3D; 4;</span><br><span class="line">console.log(a); &#x2F;&#x2F; 4</span><br></pre></td></tr></table></figure>
-
-<p>let、const沒有上面的特性<br>1.從哪邊開始寫就是從哪邊開始創建這變數<br>2.不能在同區塊上重複命名<br>3.不會在全域裡出現</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; 1;</span><br><span class="line">let a &#x3D; 2; &#x2F;&#x2F; Uncaught SyntaxError: Identifier &#39;a&#39; has already been declared</span><br></pre></td></tr></table></figure>
-
-
+<p>相關電子書<br><a href="https://eyesofkids.gitbooks.io/javascript-start-from-es6" target="_blank" rel="noopener">從 ES6 開始的 JavaScript 學習生活</a><br><a href="https://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入門</a><br><a href="https://www.fooish.com/javascript/ES6/" target="_blank" rel="noopener">JavaScript ES6 介紹</a></p>
 <hr>
 <h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><ol>
 <li>需要重複定義的變數使用。</li>
-<li>for 的用法<br>例子1<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (let i&#x3D;0; i&lt;3; i++) &#123;</span><br><span class="line">    console.log(i); &#x2F;&#x2F; i 分別等於0、1、2</span><br><span class="line">&#125;</span><br><span class="line">console.log(i); &#x2F;&#x2F; i is not defined</span><br></pre></td></tr></table></figure>
-在 for 中 i 會顯示 0、1、2，<br>但是在外面看 i 會顯示 is not defined 因為在全域中沒有定義這變數</li>
+<li>for 的用法</li>
 </ol>
+<p>例子1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (let i&#x3D;0; i&lt;3; i++) &#123;</span><br><span class="line">    console.log(i); &#x2F;&#x2F; i 分別等於0、1、2</span><br><span class="line">&#125;</span><br><span class="line">console.log(i); &#x2F;&#x2F; i is not defined</span><br></pre></td></tr></table></figure>
+<p>在 for 中 i 會顯示 0、1、2，<br>但是在外面看 i 會顯示 is not defined 因為在全域中沒有定義這變數</p>
 <p>例子2</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class&#x3D;&quot;list&quot;&gt;</span><br><span class="line">  &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  const list &#x3D; document.querySelectorAll(&#39;.list li&#39;);</span><br><span class="line">  for(var i&#x3D;0; i&lt;list.length; i++) &#123;</span><br><span class="line">    list[i].addEventListener(&#39;click&#39;,function()&#123;</span><br><span class="line">      console.log(i+1)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>document.querySelectorAll(‘.list li’)是一個陣列<br>點所有的數字都會顯示4，因為被全域影響到，查看console會發現i=3<br>想解決只要把var變成let就可以</p>
+<p>document.querySelectorAll(‘.list li’) 是一個陣列<br>點所有的數字都會顯示4，因為被全域影響到，查看 console 會發現 i=3<br>想解決只要把 var 變成 let 就可以</p>
 <hr>
 <h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><h4 id="唯讀變數、不能修改"><a href="#唯讀變數、不能修改" class="headerlink" title="唯讀變數、不能修改"></a>唯讀變數、不能修改</h4><p>不會再定義這變數使用 const，可避免同樣變數重複定義 (ex：url的網址)，去修改就會顯示錯誤。</p>
-<p>也因此在過去可以先使用 var 宣告變數 (未賦予值 undefined)，<br>但在 const 宣告時一定要賦予值。</p>
+<p>也因此在過去可以先使用 var 宣告變數 (未賦予值 undefined )，<br>但在 const 宣告時一定要賦予值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a; &#x2F;&#x2F; undefined</span><br><span class="line">const b;  &#x2F;&#x2F; Uncaught SyntaxError: Missing initializer in const declaration</span><br></pre></td></tr></table></figure>
 
 <h4 id="物件、陣列有傳參考特性"><a href="#物件、陣列有傳參考特性" class="headerlink" title="物件、陣列有傳參考特性"></a>物件、陣列有傳參考特性</h4><p>可以修改裡面的值，但是不能重新定義</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const person &#x3D; &#123;</span><br><span class="line">  name: &quot;aaa&quot;,</span><br><span class="line">  money: 100</span><br><span class="line">&#125;</span><br><span class="line">person.name &#x3D; &quot;bbb&quot;;   &#x2F;&#x2F; person &#x3D;&#x3D;&gt; &#123;name: &quot;bbb&quot;, money: 100&#125;</span><br><span class="line">person &#x3D; &#123;&#125;;  &#x2F;&#x2F; Uncaught TypeError: Assignment to constant variable.</span><br></pre></td></tr></table></figure>
 
-<h4 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a>Object.freeze()</h4><p>物件、陣列裡面的值永遠凍結<br>Object.freeze(變數);  被凍結的是裡面的屬性name、money</p>
+<h4 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a>Object.freeze()</h4><p>物件、陣列裡面的值永遠凍結<br>Object.freeze (變數);  被凍結的是裡面的屬性 name、money</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const person &#x3D; &#123;  </span><br><span class="line">  name: &quot;aaa&quot;,</span><br><span class="line">  money: 100</span><br><span class="line">&#125;</span><br><span class="line">person.name &#x3D; &quot;bbb&quot;;</span><br><span class="line">Object.freeze(person);</span><br><span class="line">person.money &#x3D; 500;  &#x2F;&#x2F; person &#x3D;&#x3D;&gt; &#123;name: &quot;bbb&quot;, money: 100&#125;</span><br><span class="line">person &#x3D; &#123;&#125;;  &#x2F;&#x2F; person &#x3D;&#x3D;&gt; Uncaught TypeError: Assignment to constant variable.</span><br></pre></td></tr></table></figure>
 
 <p>如果使用 var ，物件還是可以被修改，但使用上面 const 就會全部被凍結</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123;  &#x2F;&#x2F; 使用 var</span><br><span class="line">  name: &quot;aaa&quot;,</span><br><span class="line">  money: 100</span><br><span class="line">&#125;</span><br><span class="line">person.name &#x3D; &quot;bbb&quot;;</span><br><span class="line">Object.freeze(person);</span><br><span class="line">person.money &#x3D; 500;  &#x2F;&#x2F; person &#x3D;&#x3D;&gt; &#123;name: &quot;bbb&quot;, money: 100&#125;</span><br><span class="line">person &#x3D; &#123;&#125;;  &#x2F;&#x2F; person &#x3D;&#x3D;&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="let、const-特性"><a href="#let、const-特性" class="headerlink" title="let、const 特性"></a>let、const 特性</h3><p>為了解決原本使用 var 容易汙染全域變數。<br>維護性比較高，不會互相汙染到變數影響開發者(避免合併時會有衝突)</p>
+<h4 id="A-區塊變數"><a href="#A-區塊變數" class="headerlink" title="A. 區塊變數"></a>A. 區塊變數</h4><p>用來宣告區塊裡的變數，被「{}」花括弧包起來的變數，使用到 let、const 時只會存活在括號裡。<br>盡量使用 const，除非變數要改才用 let。</p>
+<h4 id="B-hoisting-向上提升-創造、執行順序"><a href="#B-hoisting-向上提升-創造、執行順序" class="headerlink" title="B. hoisting 向上提升(創造、執行順序)"></a>B. hoisting 向上提升(創造、執行順序)</h4><p>var 的向上提升的特性使的定義變數前.變數也有 undefined，此外也可同個變數重複命名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; var a; &#x2F;&#x2F; 下一行出現 undefined 是因為這行隱藏了事先定義變數。</span><br><span class="line">console.log(a); &#x2F;&#x2F; undefined</span><br><span class="line">var a &#x3D; 3;</span><br><span class="line">var a &#x3D; 4;</span><br><span class="line">console.log(a); &#x2F;&#x2F; 4</span><br></pre></td></tr></table></figure>
+
+<p>let、const 沒有上面的特性<br>1.從哪邊開始寫就是從哪邊開始創建這變數<br>2.不能在同區塊上重複命名<br>3.不會在全域裡出現</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; 1;</span><br><span class="line">let a &#x3D; 2; &#x2F;&#x2F; Uncaught SyntaxError: Identifier &#39;a&#39; has already been declared</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
+<li><p>Q1: console 是?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(a); </span><br><span class="line">let a &#x3D; 10;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Q2: var、let、const 的區別<br>var 函式作用域(可以全域、區塊).可以重複定義.會影響全域變數使的維護不容易、協作變數容易互相影響。<br>let 區塊作用域.無法重複定義.但是變數可以重新賦予值。<br>const 區塊作用域.無法重複定義.宣告時必須給定值，不能再被更改，有效降低出現錯誤的機會。</p>
+</li>
+</ul>
+<p>參考<br><a href="https://askie.today/differences-among-var-let-const/" target="_blank" rel="noopener">在 JavaScript 中，Var、Let、Const 的差異？</a><br><a href="https://wcc723.github.io/javascript/2017/12/20/javascript-es6-let-const/" target="_blank" rel="noopener">ES6 開始的新生活 let, const</a></p>
 
     </div>
 
@@ -411,7 +437,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#相關電子書"><span class="nav-number">1.</span> <span class="nav-text">相關電子書</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let、const-特性"><span class="nav-number">2.</span> <span class="nav-text">let、const 特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-不容易汙染全域變數-window-裡面"><span class="nav-number">2.1.</span> <span class="nav-text">A. 不容易汙染全域變數 window 裡面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-區塊變數"><span class="nav-number">2.2.</span> <span class="nav-text">B. 區塊變數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-hoisting-向上提升-創造、執行順序"><span class="nav-number">2.3.</span> <span class="nav-text">C. hoisting 向上提升(創造、執行順序)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">3.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">4.</span> <span class="nav-text">const</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#唯讀變數、不能修改"><span class="nav-number">4.1.</span> <span class="nav-text">唯讀變數、不能修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物件、陣列有傳參考特性"><span class="nav-number">4.2.</span> <span class="nav-text">物件、陣列有傳參考特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-freeze"><span class="nav-number">4.3.</span> <span class="nav-text">Object.freeze()</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什麼是ES6"><span class="nav-number">2.</span> <span class="nav-text">什麼是ES6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">3.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">4.</span> <span class="nav-text">const</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#唯讀變數、不能修改"><span class="nav-number">4.1.</span> <span class="nav-text">唯讀變數、不能修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物件、陣列有傳參考特性"><span class="nav-number">4.2.</span> <span class="nav-text">物件、陣列有傳參考特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-freeze"><span class="nav-number">4.3.</span> <span class="nav-text">Object.freeze()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let、const-特性"><span class="nav-number">5.</span> <span class="nav-text">let、const 特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-區塊變數"><span class="nav-number">5.1.</span> <span class="nav-text">A. 區塊變數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-hoisting-向上提升-創造、執行順序"><span class="nav-number">5.2.</span> <span class="nav-text">B. hoisting 向上提升(創造、執行順序)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">6.</span> <span class="nav-text">思考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
