@@ -1,6 +1,6 @@
 ---
 title: template
-tags: Hexo
-categories: Hexo
+tags: JavaScript
+categories: JavaScript
 ---
 template123

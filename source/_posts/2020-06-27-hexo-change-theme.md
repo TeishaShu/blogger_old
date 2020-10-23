@@ -1,7 +1,6 @@
 ---
 title: Hexo 建立部落格(3) - 更換主題
-tags: 
-    - Hexo
+tags: Hexo
 categories: Hexo
 ---
 ### 前言
@@ -40,7 +39,7 @@ hexo d
 注意上傳的網址路徑.錯誤會跑版.如果跑掉只要在網頁的 _config.yml 設定 root 。
 
 我是用 github
-如果靜態網頁是上傳到 master，只要設定成
+如果靜態網頁是上傳到 master ，只要設定成
 ```
 root: /
 ```

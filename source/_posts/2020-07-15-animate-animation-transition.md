@@ -1,5 +1,5 @@
 ---
-title: 網頁動畫、特效(1)- Animation、Transition
+title: 網頁動畫、特效(1) - Animation、Transition
 categories: CSS
 tags: 
   - CSS
@@ -56,7 +56,7 @@ animation: [name 名稱] [duration 時間] | [timing-function 執行效果] | [d
 ```
 
 - 設定時間有2種方式:
-  1. from、to : 一開始和最後的效果(0%、100%)
+  1. from、to : 一開始和最後的效果( 0%、100% )
   ```
   @keyframes animate1 {
     from {background-color:red; margin-left:0;}
@@ -107,7 +107,7 @@ div{
 [完整解析 CSS 動畫](https://www.oxxostudio.tw/articles/201803/css-animation.html)
 
 #### Animate.css
-CSS3 Animate 有太多要設定，有人整理成一個css檔方便使用，只要會引用、使用就可以操作。
+CSS3 Animate 有太多要設定，有人整理成一個 css 檔方便使用，只要會引用、使用就可以操作。
 [Animate.css](https://animate.style/)
 
 Vue.js中使用方式
@@ -115,7 +115,7 @@ Vue.js中使用方式
 
 操作流程:
 1. 下載安裝
-2. 在想要動畫的地方放 css，每個想要的特效前面都要加```animate__animated```。
+2. 在想要動畫的地方放 css，每個想要的特效前面都要加 ```animate__animated```。
 ```
 <h1 class="title animate__animated animate__bounce">title</h1>
 ```
@@ -168,7 +168,7 @@ transition: [property 名稱] [duration 時間] [timing-function 特效] [delay 
 | ease-in-out | cubic-bezier (0.42, 0, 0.58, 1.0)    | 慢(吃力的起床) > 快 > 慢(剎車感)  |
 
 想要其他的線性可以使用下面的網站自己調看看
-4個數字組成，0~1之間
+4 個數字組成， 0~1 之間
 [貝茲曲線](https://cubic-bezier.com/)
 
 #### 套用效果
@@ -221,7 +221,7 @@ div:hover{
 | Animation  | 1. 網頁載入直接執行特效。<br>2. 可設定較細的動畫效果\(關鍵影格\.設定很多時間點\)                           |
 | Transition | 1. 需要事件觸發才能執行特效。\(滑鼠、鍵盤事件\) <br>2. 只能設定一開始跟結束的效果中間無法。<br>3. 一次性無法重複 \(除非一直觸發才能重複\) |
 
-他們簡寫的前4個順序一樣，但只要寫前面2個就可以跑了。
+他們簡寫的前 4 個順序一樣，但只要寫前面2個就可以跑了。
 
 - animation: 
 name duration timing-function delay 

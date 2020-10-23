@@ -1,5 +1,5 @@
 ---
-title: 網頁動畫、特效(2)- Gsap3 + Vue.js
+title: 網頁動畫、特效(2) - Gsap3 + Vue.js
 categories: Gsap
 tags: 
   - Gsap
