@@ -1,6 +1,6 @@
 ---
 title: Node(1) - 基礎
-tags: Node.js
+tag: Node.js
 categories: Node.js
 ---
 ### V8
