@@ -75,12 +75,34 @@ const Content = (
 ReactDOM.render(Content, document.getElementById('root'));
 ```
 
+獨立出來
+事件處理的命名通常使用 handle 開頭
+```
+function handleClick(math) {
+  math = math + 1;
+  console.log(math)
+}
+// 也可以寫成
+// const handleClick = (math) => { math = math + 1;}
+
+const Content = (
+  let math = 0;
+  return(
+    <div onClick={(math) => { handleClick(math)} >{{text}}</div>
+    {/* 如果寫成下面這樣.會直接執行.因此外面要在一個 function */}
+    {/* <div onClick={handleClick(math)} >{{text}}</div> */}
+  );
+);
+ReactDOM.render(Content, document.getElementById('root'));
+```
+
 但是執行後畫面不會更新，只有資料更新，render 只跑一次，之後怎麼按 onclick 都只有數字增加而已，不會跑出 render 的字，因為 React 不知道需要幫我們更新畫面。
 
 ### useState
 資料有變動時就會更新畫面，React Hooks 的其中一個。
 改變 data (資料) 被稱為 state (狀態)，主要就是操作 data 資料。
 只要以 use 開頭的函式代表是個 Hook。
+注意： use 開頭的函式不可以放在判斷式內。
 
 3個步驟建立 useState
 ```
@@ -110,3 +132,5 @@ ReactDOM.render(Content, document.getElementById('root'));
 裡面變數的名稱都可以自己取只是第二個通常以 set 開頭。
 在更換時始會更會有改變的部分，不會整個 DOM 換掉，能讓網頁效能提升。
 
+useState 在使用 CDN 時是用 const { useState } = React; 使用這功能。
+在 cli 中是使用  import React, { useState } from 'react';
